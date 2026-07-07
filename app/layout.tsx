@@ -8,6 +8,7 @@ import { FloatingCTAs } from "@/components/FloatingCTAs";
 import { CookieBanner } from "@/components/CookieBanner";
 import { LanguageProvider } from "@/providers/LanguageProvider";
 import { BookingBar } from "@/components/BookingBar";
+import { Preloader } from "@/components/Preloader";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://lakeescape.in"),
@@ -31,6 +32,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en">
       <body className="font-sans antialiased bg-cream text-matte-black">
         <LanguageProvider>
+          {/* Blur-tracking brand preloader overlay */}
+          <Preloader />
           <MotionProvider />
           <CustomCursor />
           <Navbar />

@@ -40,7 +40,7 @@ export function DiningSection() {
         
         {/* Gastronomy Section Title (Pulso style) */}
         <div className="reveal mb-16 max-w-2xl">
-          <p className="eyebrow text-gold/90 mb-3">{t.dining.eyebrow}</p>
+          <p className="font-cursive text-3xl text-gold mb-1 select-none leading-none">{t.dining.eyebrow}</p>
           <h2 className="font-serif text-3xl font-light tracking-wide text-cream md:text-4xl leading-tight">
             {t.dining.title}
           </h2>

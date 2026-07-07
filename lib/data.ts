@@ -2,9 +2,10 @@ import { Anchor, Bath, BedDouble, Bike, CalendarDays, ChefHat, Flame, Mountain, 
 
 export const media = {
   heroVideo: "/media/header-video-1.mp4",
-  boatOne: "/media/lake-escape-boat-1.png",
-  boatTwo: "/media/lake-escape-boat-2.png",
-  sunset: "/media/tehri-sunset.png"
+  // High-res Unsplash links for premium floating hotel and mountain lake aesthetics
+  boatOne: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=1200",
+  boatTwo: "https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=1200",
+  sunset: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=1200"
 };
 
 export const navItems = [
@@ -21,7 +22,7 @@ export const rooms = [
     slug: "lake-view-suite",
     name: "Lake View Suite",
     price: 14500,
-    image: media.boatOne,
+    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1200",
     size: "340 sq ft",
     guests: "2 guests",
     tone: "Private deck facing Tehri Lake with warm woods, soft linen and sunrise tea service.",
@@ -31,7 +32,7 @@ export const rooms = [
     slug: "sunset-cabin",
     name: "Sunset Cabin",
     price: 12800,
-    image: media.sunset,
+    image: "https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=1200",
     size: "300 sq ft",
     guests: "2 guests",
     tone: "Golden hour views, quiet interiors and a compact lounge crafted for slow evenings.",
@@ -41,7 +42,7 @@ export const rooms = [
     slug: "mountain-deck-room",
     name: "Mountain Deck Room",
     price: 13200,
-    image: media.boatTwo,
+    image: "https://images.unsplash.com/photo-1591088398332-8a7791972843?q=80&w=1200",
     size: "315 sq ft",
     guests: "2 guests",
     tone: "A refined hideaway with mountain-framed windows and direct access to the upper deck.",
@@ -51,7 +52,7 @@ export const rooms = [
     slug: "captains-residence",
     name: "Captain's Residence",
     price: 18500,
-    image: media.boatOne,
+    image: "https://images.unsplash.com/photo-1618773928121-c32242e63f39?q=80&w=1200",
     size: "420 sq ft",
     guests: "3 guests",
     tone: "The signature suite with generous living space, premium bath and the best bow views.",
@@ -109,7 +110,7 @@ export const cuisines = [
     category: "Breakfast",
     description: "Finger millet breads served with local wild-mustard tempered potatoes and fresh churned butter.",
     price: 650,
-    image: media.boatTwo
+    image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=400"
   },
   {
     id: "cuisine-2",
@@ -117,7 +118,7 @@ export const cuisines = [
     category: "Entrée",
     description: "Freshly caught trout marinated with mountain wild yellow mustard and grilled over wood-embers on the deck.",
     price: 1850,
-    image: media.sunset
+    image: "https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=400"
   },
   {
     id: "cuisine-3",
@@ -125,7 +126,7 @@ export const cuisines = [
     category: "Main Course",
     description: "Slow-cooked black gram gravy cooked in an iron kadhai, served with traditional hill wheat bread and ghee.",
     price: 1100,
-    image: media.boatOne
+    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=400"
   },
   {
     id: "cuisine-4",
@@ -133,7 +134,7 @@ export const cuisines = [
     category: "Beverages",
     description: "Sweet, tangy syrup made from wild red rhododendron flowers, served with club soda, lemon, and fresh hill mint.",
     price: 350,
-    image: media.sunset
+    image: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=400"
   },
   {
     id: "cuisine-5",
@@ -141,6 +142,6 @@ export const cuisines = [
     category: "Entrée",
     description: "Traditional organic horse-gram soup served with soft boiled flour paste and clarified cow ghee.",
     price: 950,
-    image: media.boatTwo
+    image: "https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=400"
   }
 ];

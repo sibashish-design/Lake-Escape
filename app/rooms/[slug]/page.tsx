@@ -266,6 +266,68 @@ export default async function RoomDetailPage({ params }: { params: Promise<{ slu
         </div>
       </section>
 
+      {/* Reviews Section */}
+      <section className="container max-w-6xl px-6 pt-8 pb-4 border-t border-matte-black/10">
+        <div className="flex items-center gap-3 mb-6">
+          <h3 className="font-serif text-xl font-light text-matte-black tracking-wide">
+            Guest Reviews
+          </h3>
+          <span className="font-sans text-xs font-semibold bg-beige text-olive px-2.5 py-0.5 rounded-[4px]">
+            ★ 4.9 &bull; 48 reviews
+          </span>
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-3">
+          <div className="bg-white rounded-[4px] border border-matte-black/10 p-5 space-y-3.5 shadow-sm">
+            <div className="flex items-center gap-3">
+              <div className="h-9 w-9 rounded-full bg-olive/10 flex items-center justify-center text-olive font-serif text-sm font-semibold uppercase">
+                AM
+              </div>
+              <div>
+                <h4 className="font-sans text-xs font-bold text-matte-black">Ananya Mehra</h4>
+                <p className="font-sans text-[10px] text-matte-black/45">June 2026 &bull; Verified stay</p>
+              </div>
+            </div>
+            <div className="text-gold text-xs">★★★★★</div>
+            <p className="font-sans text-xs font-light text-matte-black/75 leading-relaxed">
+              &ldquo;The boat felt private, cinematic and calm. Sunrise from the deck was the absolute highlight of our Uttarakhand trip. The morning rhododendron tea is unforgettable.&rdquo;
+            </p>
+          </div>
+
+          <div className="bg-white rounded-[4px] border border-matte-black/10 p-5 space-y-3.5 shadow-sm">
+            <div className="flex items-center gap-3">
+              <div className="h-9 w-9 rounded-full bg-olive/10 flex items-center justify-center text-olive font-serif text-sm font-semibold uppercase">
+                RB
+              </div>
+              <div>
+                <h4 className="font-sans text-xs font-bold text-matte-black">Rohan Batra</h4>
+                <p className="font-sans text-[10px] text-matte-black/45">May 2026 &bull; Anniversary retreat</p>
+              </div>
+            </div>
+            <div className="text-gold text-xs">★★★★★</div>
+            <p className="font-sans text-xs font-light text-matte-black/75 leading-relaxed">
+              &ldquo;Lake Escape gave us a celebration that did not feel like a standard hotel package. The hospitality was quiet, personalized, and the lakeside dinner was spectacular.&rdquo;
+            </p>
+          </div>
+
+          <div className="bg-white rounded-[4px] border border-matte-black/10 p-5 space-y-3.5 shadow-sm">
+            <div className="flex items-center gap-3">
+              <div className="h-9 w-9 rounded-full bg-olive/10 flex items-center justify-center text-olive font-serif text-sm font-semibold uppercase">
+                NS
+              </div>
+              <div>
+                <h4 className="font-sans text-xs font-bold text-matte-black">Nikita Sharma</h4>
+                <p className="font-sans text-[10px] text-matte-black/45">April 2026 &bull; Family weekend</p>
+              </div>
+            </div>
+            <div className="text-gold text-xs">★★★★★</div>
+            <p className="font-sans text-xs font-light text-matte-black/75 leading-relaxed">
+              &ldquo;The setting is spectacular, but the real luxury is how quietly everything works around you. No noise, just the sound of water and absolute peace.&rdquo;
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Featured Cabins Recommended (Image 1 style) */}
       <section className="container max-w-6xl px-6 pt-8 border-t border-matte-black/10">
         <h3 className="font-serif text-xl font-light text-matte-black tracking-wide mb-6">

@@ -82,7 +82,7 @@ export function ContactSection() {
           {/* Left Side: Contact Information */}
           <div className="flex flex-col justify-between space-y-8">
             <div className="reveal">
-              <p className="eyebrow mb-3">{c.eyebrow}</p>
+              <p className="font-cursive text-3xl text-gold mb-1 select-none leading-none">{c.eyebrow}</p>
               <h2 className="font-serif text-3xl font-light tracking-wide text-matte-black md:text-4xl leading-tight">
                 {c.title}
               </h2>

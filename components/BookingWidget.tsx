@@ -11,9 +11,15 @@ import { useLanguage } from "@/providers/LanguageProvider";
 interface BookingWidgetProps {
   compact?: boolean;
   isCheckoutPage?: boolean;
+  selectedRoomSlug?: string;
+  onRoomSlugChange?: (slug: string) => void;
 }
 
-export function BookingWidget({ isCheckoutPage = false }: BookingWidgetProps) {
+export function BookingWidget({ 
+  isCheckoutPage = false,
+  selectedRoomSlug,
+  onRoomSlugChange
+}: BookingWidgetProps) {
   const { t, locale } = useLanguage();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -22,8 +28,11 @@ export function BookingWidget({ isCheckoutPage = false }: BookingWidgetProps) {
   const [checkIn, setCheckIn] = useState("2026-08-14");
   const [checkOut, setCheckOut] = useState("2026-08-16");
   const [guests, setGuests] = useState(2);
-  const [roomSlug, setRoomSlug] = useState("lake-view-suite");
+  const [localRoomSlug, setLocalRoomSlug] = useState("lake-view-suite");
   const [coupon, setCoupon] = useState("");
+
+  const roomSlug = selectedRoomSlug || localRoomSlug;
+  const setRoomSlug = onRoomSlugChange || setLocalRoomSlug;
 
   // Contact inputs (checkout mode)
   const [name, setName] = useState("");
@@ -46,7 +55,7 @@ export function BookingWidget({ isCheckoutPage = false }: BookingWidgetProps) {
     if (paramGuests) setGuests(Number(paramGuests) || 2);
     if (paramRoom) setRoomSlug(paramRoom);
     if (paramCoupon) setCoupon(paramCoupon);
-  }, [searchParams]);
+  }, [searchParams, setRoomSlug]);
 
   // Selected room details
   const activeRoom = useMemo(() => {

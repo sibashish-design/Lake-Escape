@@ -70,7 +70,7 @@ export function IntroSection() {
         {/* Pulso style section title & content */}
         <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] items-start mb-16">
           <div className="reveal">
-            <p className="eyebrow mb-3">{t.intro.eyebrow}</p>
+            <p className="font-cursive text-3xl text-gold mb-1 select-none leading-none">{t.intro.eyebrow}</p>
             <h2 className="font-serif text-3xl font-light tracking-wide text-matte-black md:text-4xl leading-tight">
               Lake Escape Tehri
             </h2>

@@ -72,7 +72,7 @@ export function Hero() {
 
             {/* Localized Subcopy & Buttons */}
             <div className="space-y-6 max-w-xl mx-auto mt-4">
-              <p className="eyebrow text-gold/90 font-medium tracking-[0.25em]">
+              <p className="font-cursive text-3xl md:text-4xl text-gold select-none lowercase leading-none">
                 {t.hero.eyebrow}
               </p>
               <p className="font-sans text-sm font-light leading-relaxed tracking-wide text-cream/70 md:text-base">

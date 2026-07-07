@@ -61,7 +61,7 @@ export function ExperiencesSection() {
         {/* Section Header (Pulso diary title layout) */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div className="max-w-xl">
-            <p className="eyebrow mb-3">{t.experiences.eyebrow}</p>
+            <p className="font-cursive text-3xl text-gold mb-1 select-none leading-none">{t.experiences.eyebrow}</p>
             <h2 className="font-serif text-3xl font-light tracking-wide text-matte-black md:text-4xl leading-tight">
               {t.experiences.title}
             </h2>

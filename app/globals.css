@@ -1,28 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Allura&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap');
 @import "tailwindcss";
 @source "../app/**/*.{ts,tsx}";
 @source "../components/**/*.{ts,tsx}";
 @source "../lib/**/*.{ts,tsx}";
 
 @theme {
-  --color-olive: #6B7353;
-  --color-olive-dark: #5F6B45;
-  --color-beige: #EDE6D9;
-  --color-beige-dark: #E7DFCF;
-  --color-cream: #FAF7F0;
-  --color-matte-black: #1C1B19;
-  --color-gold: #B79C62;
-  --font-serif: Futura, "Century Gothic", "Helvetica Neue", Arial, sans-serif;
-  --font-sans: Helvetica, "Helvetica Neue", Arial, sans-serif;
+  --color-olive: #4C533C;
+  --color-olive-dark: #3B402F;
+  --color-beige: #F5F2EB;
+  --color-beige-dark: #EAE4D7;
+  --color-cream: #FAF9F6;
+  --color-matte-black: #191919;
+  --color-gold: #C5A880;
+  --font-serif: Futura, "Helvetica Neue", Arial, sans-serif;
+  --font-sans: "Poppins", Helvetica, Arial, sans-serif;
+  --font-cursive: "Allura", cursive;
 }
 
 :root {
-  --olive: #6B7353;
-  --olive-dark: #5F6B45;
-  --beige: #EDE6D9;
-  --beige-dark: #E7DFCF;
-  --cream: #FAF7F0;
-  --matte-black: #1C1B19;
-  --gold: #B79C62;
+  --olive: #4C533C;
+  --olive-dark: #3B402F;
+  --beige: #F5F2EB;
+  --beige-dark: #EAE4D7;
+  --cream: #FAF9F6;
+  --matte-black: #191919;
+  --gold: #C5A880;
 }
 
 * {
@@ -66,7 +68,7 @@ a {
 
 /* Standard Section Layout */
 .section {
-  padding: clamp(48px, 6vw, 80px) 24px;
+  padding: clamp(32px, 4vw, 56px) 20px;
   position: relative;
 }
 

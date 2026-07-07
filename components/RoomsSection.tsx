@@ -43,7 +43,7 @@ export function RoomsSection() {
         
         {/* Section Header (Pulso accommodations title) */}
         <div className="reveal mb-12 max-w-xl">
-          <p className="eyebrow mb-3">{t.rooms.eyebrow}</p>
+          <p className="font-cursive text-3xl text-gold mb-1 select-none leading-none">{t.rooms.eyebrow}</p>
           <h2 className="font-serif text-3xl font-light tracking-wide text-matte-black md:text-4xl leading-tight">
             {t.rooms.title}
           </h2>
