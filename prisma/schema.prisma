@@ -41,6 +41,16 @@ model Coupon {
   createdAt DateTime @default(now())
 }
 
+model Cuisine {
+  id          String   @id @default(cuid())
+  name        String
+  category    String
+  description String
+  price       Int
+  image       String
+  createdAt   DateTime @default(now())
+}
+
 enum BookingStatus {
   PENDING
   CONFIRMED

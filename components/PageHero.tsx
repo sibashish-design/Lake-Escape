@@ -1,15 +1,51 @@
+"use client";
+
 import Image from "next/image";
 import { media } from "@/lib/data";
 
-export function PageHero({ eyebrow, title, text, image = media.boatOne }: { eyebrow: string; title: string; text: string; image?: string }) {
+interface PageHeroProps {
+  eyebrow: string;
+  title: string;
+  text: string;
+  image?: string;
+}
+
+export function PageHero({ eyebrow, title, text, image = media.boatOne }: PageHeroProps) {
   return (
-    <section className="relative min-h-[68svh] overflow-hidden bg-[#1B1B1B] px-5 pb-16 pt-36 text-white">
-      <Image src={image} alt={title} fill priority className="image-cover opacity-70" sizes="100vw" />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/22 to-black/74" />
-      <div className="relative z-10 mx-auto flex min-h-[45svh] max-w-7xl flex-col justify-end">
-        <p className="eyebrow mb-5 text-[#E7D7B3]">{eyebrow}</p>
-        <h1 className="font-display max-w-5xl text-[clamp(3.5rem,9vw,8.5rem)] font-semibold leading-[0.9]">{title}</h1>
-        <p className="mt-6 max-w-2xl text-lg leading-8 text-white/82">{text}</p>
+    <section className="relative flex min-h-[55vh] items-end overflow-hidden bg-matte-black px-6 pb-16 pt-32 text-cream">
+      {/* Background Image with Ken Burns zoom */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <Image
+          src={image}
+          alt={title}
+          fill
+          priority
+          sizes="100vw"
+          className="image-cover opacity-60 animate-kenburns"
+        />
+      </div>
+
+      {/* Subtle dark gradient overlay */}
+      <div className="absolute inset-0 z-10 bg-gradient-to-t from-matte-black/85 via-matte-black/40 to-transparent" />
+
+      {/* Hero Content */}
+      <div className="relative z-20 mx-auto w-full max-w-7xl">
+        <div className="max-w-2xl">
+          {/* Eyebrow */}
+          <p className="eyebrow mb-4 text-gold/90 tracking-[0.25em] font-medium">
+            {eyebrow}
+          </p>
+
+          {/* Medium Headline */}
+          <h1 className="font-serif text-3xl font-light leading-snug tracking-wide md:text-4xl lg:text-5xl text-cream">
+            {title}
+          </h1>
+
+          {/* Subcopy */}
+          <p className="mt-4 font-sans text-sm font-light leading-relaxed text-cream/80 max-w-xl">
+            {text}
+          </p>
+        </div>
       </div>
     </section>
   );

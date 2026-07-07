@@ -8,12 +8,12 @@ export const media = {
 };
 
 export const navItems = [
-  { label: "About", href: "/about" },
-  { label: "Rooms", href: "/rooms" },
-  { label: "Boat", href: "/boat-experience" },
-  { label: "Dining", href: "/dining" },
-  { label: "Gallery", href: "/gallery" },
-  { label: "Contact", href: "/contact" }
+  { label: "Rooms", href: "/#rooms" },
+  { label: "Experiences", href: "/#experiences" },
+  { label: "Dining", href: "/#dining" },
+  { label: "Gallery", href: "/#gallery" },
+  { label: "Journey", href: "/#journey" },
+  { label: "Contact", href: "/#contact" }
 ];
 
 export const rooms = [
@@ -100,4 +100,47 @@ export const faqs = [
   ["Where is Lake Escape located?", "The floating hotel is designed for Tehri Lake, Uttarakhand, with mountain and lake-view experiences."],
   ["Is online payment ready?", "The project includes a Razorpay-ready booking flow structure. Production keys are configured through environment variables."],
   ["Can content be edited later?", "The app is structured with central data and admin-ready routes so a CMS or database can be connected cleanly."]
+];
+
+export const cuisines = [
+  {
+    id: "cuisine-1",
+    name: "Garhwali Mandua Roti & Jhakhiya Aloo",
+    category: "Breakfast",
+    description: "Finger millet breads served with local wild-mustard tempered potatoes and fresh churned butter.",
+    price: 650,
+    image: media.boatTwo
+  },
+  {
+    id: "cuisine-2",
+    name: "Himalayan Trout Grill",
+    category: "Entrée",
+    description: "Freshly caught trout marinated with mountain wild yellow mustard and grilled over wood-embers on the deck.",
+    price: 1850,
+    image: media.sunset
+  },
+  {
+    id: "cuisine-3",
+    name: "Koda Roti & Chainsoo",
+    category: "Main Course",
+    description: "Slow-cooked black gram gravy cooked in an iron kadhai, served with traditional hill wheat bread and ghee.",
+    price: 1100,
+    image: media.boatOne
+  },
+  {
+    id: "cuisine-4",
+    name: "Rhododendron Blossom Cooler",
+    category: "Beverages",
+    description: "Sweet, tangy syrup made from wild red rhododendron flowers, served with club soda, lemon, and fresh hill mint.",
+    price: 350,
+    image: media.sunset
+  },
+  {
+    id: "cuisine-5",
+    name: "Baadi & Gahat Dal Soup",
+    category: "Entrée",
+    description: "Traditional organic horse-gram soup served with soft boiled flour paste and clarified cow ghee.",
+    price: 950,
+    image: media.boatTwo
+  }
 ];
