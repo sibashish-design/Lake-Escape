@@ -5,26 +5,26 @@
 @source "../lib/**/*.{ts,tsx}";
 
 @theme {
-  --color-olive: #4C533C;
-  --color-olive-dark: #3B402F;
-  --color-beige: #F5F2EB;
-  --color-beige-dark: #EAE4D7;
+  --color-olive: #4C2B36; /* Burgundy */
+  --color-olive-dark: #321A22; /* Dark Burgundy */
+  --color-beige: #221A1E; /* Warm dark gray based on the obsidian tone */
+  --color-beige-dark: #1A1317;
   --color-cream: #FAF9F6;
-  --color-matte-black: #191919;
-  --color-gold: #C5A880;
+  --color-matte-black: #141115; /* Obsidian */
+  --color-gold: #8D6346; /* Copper */
   --font-serif: Futura, "Helvetica Neue", Arial, sans-serif;
   --font-sans: "Poppins", Helvetica, Arial, sans-serif;
   --font-cursive: "Allura", cursive;
 }
 
 :root {
-  --olive: #4C533C;
-  --olive-dark: #3B402F;
-  --beige: #F5F2EB;
-  --beige-dark: #EAE4D7;
+  --olive: #4C2B36;
+  --olive-dark: #321A22;
+  --beige: #221A1E;
+  --beige-dark: #1A1317;
   --cream: #FAF9F6;
-  --matte-black: #191919;
-  --gold: #C5A880;
+  --matte-black: #141115;
+  --gold: #8D6346;
 }
 
 * {
@@ -33,14 +33,14 @@
 
 html {
   scroll-behavior: auto; /* Required for Lenis smooth scroll */
-  background: var(--cream);
-  color: var(--matte-black);
+  background: var(--matte-black);
+  color: var(--cream);
 }
 
 body {
   margin: 0;
-  background: var(--cream);
-  color: var(--matte-black);
+  background: var(--matte-black);
+  color: var(--cream);
   font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
@@ -62,37 +62,37 @@ a {
 
 /* Selection colors */
 ::selection {
-  background: var(--olive);
-  color: var(--cream);
+  background: var(--gold);
+  color: var(--matte-black);
 }
 
 /* Standard Section Layout */
 .section {
-  padding: clamp(32px, 4vw, 56px) 20px;
+  padding: clamp(48px, 6vw, 96px) 20px;
   position: relative;
 }
 
 .container {
-  width: min(1280px, 100%);
+  width: min(1440px, 100%);
   margin: 0 auto;
 }
 
 /* Eyebrows and Titles */
 .eyebrow {
-  color: var(--olive);
+  color: var(--gold);
   font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
   font-size: 11px;
   font-weight: 600;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
 }
 
-/* Glassmorphism utility */
+/* Glassmorphism utility for Dark Mode */
 .glass {
-  background: rgba(250, 247, 240, 0.75);
-  border: 1px solid rgba(28, 27, 25, 0.08);
-  box-shadow: 0 20px 40px rgba(28, 27, 25, 0.04);
-  backdrop-filter: blur(20px);
+  background: rgba(10, 10, 10, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(24px);
 }
 
 .image-cover {
@@ -101,7 +101,7 @@ a {
   object-fit: cover;
 }
 
-/* Premium Button Styling */
+/* Premium Button Styling - Dark Luxury */
 .btn {
   display: inline-flex;
   min-height: 48px;
@@ -109,13 +109,13 @@ a {
   justify-content: center;
   gap: 8px;
   border: 1px solid transparent;
-  border-radius: 999px;
+  border-radius: 4px;
   padding: 0 26px;
   font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
-  font-size: 12px;
-  font-weight: 600;
+  font-size: 11px;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   overflow: hidden;
@@ -123,8 +123,8 @@ a {
 }
 
 .btn-primary {
-  background: var(--matte-black);
-  color: var(--cream);
+  background: var(--gold);
+  color: var(--matte-black);
 }
 
 .btn-primary::before {
@@ -134,7 +134,7 @@ a {
   left: 0;
   width: 100%;
   height: 100%;
-  background: var(--olive);
+  background: var(--cream);
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
@@ -147,9 +147,9 @@ a {
 }
 
 .btn-secondary {
-  border-color: rgba(28, 27, 25, 0.15);
+  border-color: rgba(255, 255, 255, 0.2);
   background: transparent;
-  color: var(--matte-black);
+  color: var(--cream);
 }
 
 .btn-secondary::before {
@@ -159,7 +159,7 @@ a {
   left: 0;
   width: 100%;
   height: 100%;
-  background: var(--matte-black);
+  background: var(--cream);
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
@@ -167,8 +167,8 @@ a {
 }
 
 .btn-secondary:hover {
-  color: var(--cream);
-  border-color: var(--matte-black);
+  color: var(--matte-black);
+  border-color: var(--cream);
 }
 
 .btn-secondary:hover::before {
@@ -237,7 +237,7 @@ a {
 }
 
 .animate-kenburns {
-  animation: kenburns 14s ease-in-out infinite;
+  animation: kenburns 20s ease-in-out infinite;
 }
 
 /* Infinite Marquee */
@@ -256,28 +256,34 @@ a {
   animation-play-state: paused;
 }
 
-/* Thin Elegant Borders */
+/* Thin Elegant Borders for Dark Theme */
 .border-fine {
-  border: 1px solid rgba(28, 27, 25, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 .border-b-fine {
-  border-bottom: 1px solid rgba(28, 27, 25, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 .border-t-fine {
-  border-top: 1px solid rgba(28, 27, 25, 0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+.border-l-fine {
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+}
+.border-r-fine {
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--cream);
+  background: var(--matte-black);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--olive-dark);
+  background: var(--olive);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--olive);
+  background: var(--gold);
 }

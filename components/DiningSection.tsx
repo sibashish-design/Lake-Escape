@@ -1,119 +1,95 @@
 "use client";
 
-import { useEffect } from "react";
-import Image from "next/image";
 import Link from "next/link";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { media } from "@/lib/data";
 import { useLanguage } from "@/providers/LanguageProvider";
+import { FadeIn } from "@/components/ui/FadeIn";
+import { ParallaxImage } from "@/components/ui/ParallaxImage";
 
 export function DiningSection() {
   const { t } = useLanguage();
 
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
-    // Apply vertical parallax scrolling to all cards with .parallax-img class
-    const parallaxImages = gsap.utils.toArray(".parallax-img") as HTMLElement[];
-    parallaxImages.forEach((img) => {
-      gsap.fromTo(
-        img,
-        { yPercent: 0 },
-        {
-          yPercent: -12,
-          ease: "none",
-          scrollTrigger: {
-            trigger: img,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: 1.2
-          }
-        }
-      );
-    });
-  }, []);
-
   return (
-    <section id="dining" className="section bg-olive text-cream border-t border-matte-black/5">
-      <div className="container max-w-6xl">
-        
-        {/* Gastronomy Section Title (Pulso style) */}
-        <div className="reveal mb-16 max-w-2xl">
-          <p className="font-cursive text-3xl text-gold mb-1 select-none leading-none">{t.dining.eyebrow}</p>
-          <h2 className="font-serif text-3xl font-light tracking-wide text-cream md:text-4xl leading-tight">
+    <section id="dining" className="bg-matte-black text-cream border-t border-white/5 pt-32 pb-0">
+      
+      {/* Section Header */}
+      <div className="container max-w-7xl px-6 mb-20 text-center mx-auto">
+        <FadeIn delay={0.1} direction="up">
+          <p className="font-cursive text-4xl text-gold mb-3 select-none leading-none drop-shadow-sm">{t.dining.eyebrow}</p>
+        </FadeIn>
+        <FadeIn delay={0.2} direction="up">
+          <h2 className="font-serif text-4xl font-light tracking-wider text-cream md:text-5xl leading-tight">
             {t.dining.title}
           </h2>
-          <p className="mt-4 font-sans text-sm font-light text-cream/70 leading-relaxed">
+        </FadeIn>
+        <FadeIn delay={0.3} direction="up">
+          <p className="mt-6 font-sans text-sm font-light text-cream/60 leading-relaxed max-w-2xl mx-auto tracking-wide">
             {t.dining.text}
           </p>
+        </FadeIn>
+      </div>
+
+      {/* Edge-to-Edge Restaurant Blocks */}
+      <div className="flex flex-col w-full">
+        
+        {/* Restaurant 1: Bistrô */}
+        <div className="relative h-[70vh] md:h-[85vh] w-full overflow-hidden">
+          <ParallaxImage src={media.boatTwo} alt={t.dining.bistro} />
+          
+          <div className="absolute inset-0 bg-gradient-to-t from-matte-black/90 via-matte-black/20 to-transparent pointer-events-none opacity-80" />
+          
+          {/* Floating Dark Content Box */}
+          <div className="absolute bottom-0 left-0 right-0 p-8 md:p-16 flex flex-col md:flex-row md:items-end justify-between gap-8 z-10 container max-w-7xl mx-auto">
+            <div className="max-w-xl">
+              <FadeIn delay={0.1}>
+                <h3 className="font-serif text-3xl md:text-5xl font-light text-cream mb-4">{t.dining.bistro}</h3>
+              </FadeIn>
+              <FadeIn delay={0.2}>
+                <p className="font-sans text-sm md:text-base font-light text-cream/80 leading-relaxed tracking-wide">
+                  {t.dining.bistroDesc}
+                </p>
+              </FadeIn>
+            </div>
+            
+            <FadeIn delay={0.3} direction="left">
+              <Link
+                href="/dining"
+                className="btn btn-primary bg-gold text-matte-black min-w-[200px]"
+              >
+                {t.dining.learnMore}
+              </Link>
+            </FadeIn>
+          </div>
         </div>
 
-        {/* Asymmetric Cards Grid (Pulso gastronomia-wrap replica) */}
-        <div className="grid gap-12 lg:grid-cols-2">
+        {/* Restaurant 2: Boulangerie */}
+        <div className="relative h-[70vh] md:h-[85vh] w-full overflow-hidden">
+          <ParallaxImage src={media.sunset} alt={t.dining.boulangerie} />
           
-          {/* Card 1: Charlô Bistrô style */}
-          <div className="reveal flex flex-col gap-5">
-            {/* Image Container with Parallax scroll */}
-            <div className="relative aspect-[16/11] w-full overflow-hidden rounded-[8px] border border-cream/5 bg-matte-black shadow-sm">
-              <div className="parallax-img relative h-[120%] w-full -top-[10%]">
-                <Image
-                  src={media.boatTwo}
-                  alt={t.dining.bistro}
-                  fill
-                  className="image-cover opacity-90 object-cover"
-                  sizes="(max-width: 1024px) 100vw, 45vw"
-                />
-              </div>
+          <div className="absolute inset-0 bg-gradient-to-t from-matte-black/90 via-matte-black/20 to-transparent pointer-events-none opacity-80" />
+          
+          {/* Floating Dark Content Box */}
+          <div className="absolute bottom-0 left-0 right-0 p-8 md:p-16 flex flex-col md:flex-row md:items-end justify-between gap-8 z-10 container max-w-7xl mx-auto">
+            <div className="max-w-xl">
+              <FadeIn delay={0.1}>
+                <h3 className="font-serif text-3xl md:text-5xl font-light text-cream mb-4">{t.dining.boulangerie}</h3>
+              </FadeIn>
+              <FadeIn delay={0.2}>
+                <p className="font-sans text-sm md:text-base font-light text-cream/80 leading-relaxed tracking-wide">
+                  {t.dining.boulangerieDesc}
+                </p>
+              </FadeIn>
             </div>
-            {/* Content info */}
-            <div className="space-y-2">
-              <h3 className="font-serif text-xl font-normal text-cream">{t.dining.bistro}</h3>
-              <p className="font-sans text-xs font-light text-cream/70 leading-relaxed max-w-md">
-                {t.dining.bistroDesc}
-              </p>
-              <div className="pt-2">
-                <Link
-                  href="/dining"
-                  className="font-poppins text-[10px] font-bold uppercase tracking-widest text-gold hover:text-cream transition link-underline"
-                >
-                  {t.dining.learnMore} &rarr;
-                </Link>
-              </div>
-            </div>
+            
+            <FadeIn delay={0.3} direction="left">
+              <Link
+                href="/dining"
+                className="btn btn-primary bg-gold text-matte-black min-w-[200px]"
+              >
+                {t.dining.learnMore}
+              </Link>
+            </FadeIn>
           </div>
-
-          {/* Card 2: Cha Cha Boulangerie style */}
-          <div className="reveal flex flex-col gap-5 lg:mt-12">
-            {/* Image Container with Parallax scroll */}
-            <div className="relative aspect-[16/11] w-full overflow-hidden rounded-[8px] border border-cream/5 bg-matte-black shadow-sm">
-              <div className="parallax-img relative h-[120%] w-full -top-[10%]">
-                <Image
-                  src={media.sunset}
-                  alt={t.dining.boulangerie}
-                  fill
-                  className="image-cover opacity-90 object-cover"
-                  sizes="(max-width: 1024px) 100vw, 45vw"
-                />
-              </div>
-            </div>
-            {/* Content info */}
-            <div className="space-y-2">
-              <h3 className="font-serif text-xl font-normal text-cream">{t.dining.boulangerie}</h3>
-              <p className="font-sans text-xs font-light text-cream/70 leading-relaxed max-w-md">
-                {t.dining.boulangerieDesc}
-              </p>
-              <div className="pt-2">
-                <Link
-                  href="/dining"
-                  className="font-poppins text-[10px] font-bold uppercase tracking-widest text-gold hover:text-cream transition link-underline"
-                >
-                  {t.dining.learnMore} &rarr;
-                </Link>
-              </div>
-            </div>
-          </div>
-
         </div>
 
       </div>

@@ -8,6 +8,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { rooms } from "@/lib/data";
 import { formatCurrency } from "@/lib/utils";
 import { useLanguage } from "@/providers/LanguageProvider";
+import { FadeIn } from "@/components/ui/FadeIn";
+import { ParallaxImage } from "@/components/ui/ParallaxImage";
 
 type Room = typeof rooms[0];
 
@@ -16,13 +18,11 @@ export function RoomsSection() {
   const [activeTab, setActiveTab] = useState<"deluxe" | "suite">("deluxe");
   const [activeRoom, setActiveRoom] = useState<Room | null>(null);
 
-  // Group rooms based on categories
   const deluxeRooms = rooms.filter((r) => r.slug === "sunset-cabin" || r.slug === "mountain-deck-room");
   const signatureSuites = rooms.filter((r) => r.slug === "lake-view-suite" || r.slug === "captains-residence");
 
   const currentRoomsList = activeTab === "deluxe" ? deluxeRooms : signatureSuites;
 
-  // Localized texts helper
   const getLocalizedName = (slug: string) => {
     if (slug === "lake-view-suite") return t.rooms.lakeViewSuite.name;
     if (slug === "sunset-cabin") return t.rooms.sunsetCabin.name;
@@ -38,190 +38,198 @@ export function RoomsSection() {
   };
 
   return (
-    <section id="rooms" className="section bg-cream text-matte-black border-t border-matte-black/5">
-      <div className="container max-w-6xl">
+    <section id="rooms" className="section bg-matte-black text-cream border-t border-white/5 py-32">
+      <div className="container max-w-7xl">
         
-        {/* Section Header (Pulso accommodations title) */}
-        <div className="reveal mb-12 max-w-xl">
-          <p className="font-cursive text-3xl text-gold mb-1 select-none leading-none">{t.rooms.eyebrow}</p>
-          <h2 className="font-serif text-3xl font-light tracking-wide text-matte-black md:text-4xl leading-tight">
-            {t.rooms.title}
-          </h2>
-          <p className="mt-4 font-sans text-sm font-light text-matte-black/60 leading-relaxed">
-            {t.rooms.subtitle}
-          </p>
+        {/* Section Header */}
+        <div className="mb-20 max-w-xl text-center mx-auto">
+          <FadeIn delay={0.1} direction="up">
+            <p className="font-cursive text-4xl text-gold mb-3 select-none leading-none drop-shadow-sm">{t.rooms.eyebrow}</p>
+          </FadeIn>
+          <FadeIn delay={0.2} direction="up">
+            <h2 className="font-serif text-4xl font-light tracking-wider text-cream md:text-5xl leading-tight">
+              {t.rooms.title}
+            </h2>
+          </FadeIn>
+          <FadeIn delay={0.3} direction="up">
+            <p className="mt-6 font-sans text-sm font-light text-cream/60 leading-relaxed tracking-wide">
+              {t.rooms.subtitle}
+            </p>
+          </FadeIn>
         </div>
 
-        {/* Tab switch buttons (Pulso tab navigation structure) */}
-        <div className="flex border-b border-matte-black/10 mb-10 pb-2 gap-8">
-          <button
-            onClick={() => setActiveTab("deluxe")}
-            className={`font-sans text-xs font-semibold uppercase tracking-widest pb-3 transition relative ${
-              activeTab === "deluxe" ? "text-olive font-bold" : "text-matte-black/40 hover:text-matte-black"
-            }`}
-          >
-            {t.rooms.deluxe}
-            {activeTab === "deluxe" && (
-              <motion.div
-                layoutId="activeRoomTabUnderline"
-                className="absolute bottom-0 left-0 right-0 h-[2px] bg-olive"
-              />
-            )}
-          </button>
-          
-          <button
-            onClick={() => setActiveTab("suite")}
-            className={`font-sans text-xs font-semibold uppercase tracking-widest pb-3 transition relative ${
-              activeTab === "suite" ? "text-olive font-bold" : "text-matte-black/40 hover:text-matte-black"
-            }`}
-          >
-            {t.rooms.suites}
-            {activeTab === "suite" && (
-              <motion.div
-                layoutId="activeRoomTabUnderline"
-                className="absolute bottom-0 left-0 right-0 h-[2px] bg-olive"
-              />
-            )}
-          </button>
-        </div>
+        {/* Tab switch buttons */}
+        <FadeIn delay={0.4} direction="up">
+          <div className="flex justify-center border-b border-white/10 mb-20 pb-2 gap-12">
+            <button
+              onClick={() => setActiveTab("deluxe")}
+              className={`font-sans text-[10px] font-bold uppercase tracking-[0.2em] pb-3 transition relative ${
+                activeTab === "deluxe" ? "text-gold" : "text-cream/40 hover:text-cream"
+              }`}
+            >
+              {t.rooms.deluxe}
+              {activeTab === "deluxe" && (
+                <motion.div
+                  layoutId="activeRoomTabUnderline"
+                  className="absolute bottom-0 left-0 right-0 h-[1px] bg-gold"
+                />
+              )}
+            </button>
+            
+            <button
+              onClick={() => setActiveTab("suite")}
+              className={`font-sans text-[10px] font-bold uppercase tracking-[0.2em] pb-3 transition relative ${
+                activeTab === "suite" ? "text-gold" : "text-cream/40 hover:text-cream"
+              }`}
+            >
+              {t.rooms.suites}
+              {activeTab === "suite" && (
+                <motion.div
+                  layoutId="activeRoomTabUnderline"
+                  className="absolute bottom-0 left-0 right-0 h-[1px] bg-gold"
+                />
+              )}
+            </button>
+          </div>
+        </FadeIn>
 
-        {/* Dynamic slides list container */}
-        <div className="grid gap-8 md:grid-cols-2">
+        {/* Staggered Vertical List */}
+        <div className="flex flex-col gap-24 md:gap-32">
           <AnimatePresence mode="wait">
-            {currentRoomsList.map((room) => (
+            {currentRoomsList.map((room, index) => (
               <motion.div
                 key={room.slug}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.4 }}
-                className="reveal group cursor-pointer overflow-hidden rounded-[8px] border border-matte-black/5 bg-beige/10 hover:shadow-md transition duration-500"
-                onClick={() => setActiveRoom(room)}
-                data-cursor="View Room"
+                transition={{ duration: 0.6 }}
+                className="flex flex-col md:flex-row items-center gap-8 md:gap-16 group"
               >
                 {/* Media Container */}
-                <div className="relative aspect-[16/10] w-full overflow-hidden bg-matte-black">
-                  <Image
-                    src={room.image}
-                    alt={getLocalizedName(room.slug)}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 45vw"
-                    className="image-cover opacity-95 transition-transform duration-[8000ms] ease-out group-hover:scale-106"
-                  />
-                  <div className="absolute inset-0 z-10 bg-gradient-to-t from-matte-black/60 via-transparent to-transparent opacity-75" />
-                  
-                  {/* Price Tag Overlay */}
-                  <div className="absolute top-4 right-4 z-20 rounded-full bg-cream/95 px-3 py-1 backdrop-blur-sm border border-matte-black/5">
-                    <p className="font-poppins text-[10px] font-bold uppercase tracking-widest text-olive">
-                      {formatCurrency(room.price)} / {t.rooms.night}
-                    </p>
+                <div className={`w-full md:w-3/5 overflow-hidden ${index % 2 === 1 ? 'md:order-2' : ''}`}>
+                  <div className="relative aspect-[4/3] w-full rounded-sm overflow-hidden bg-matte-black cursor-pointer" onClick={() => setActiveRoom(room)}>
+                    <ParallaxImage src={room.image} alt={getLocalizedName(room.slug)} />
+                    <div className="absolute inset-0 z-10 bg-gradient-to-t from-matte-black/60 via-transparent to-transparent opacity-50" />
+                    <div className="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-matte-black/20 backdrop-blur-[2px]">
+                      <span className="font-sans text-[10px] font-bold uppercase tracking-[0.3em] text-cream border border-cream/20 px-6 py-3 rounded-sm">
+                        View Details
+                      </span>
+                    </div>
                   </div>
                 </div>
 
                 {/* Content Container */}
-                <div className="p-6 relative z-20">
-                  <h3 className="font-serif text-xl font-light text-matte-black tracking-wide">
-                    {getLocalizedName(room.slug)}
-                  </h3>
-                  <div className="flex gap-3 mt-2 text-olive font-poppins text-[9px] font-bold uppercase tracking-widest">
-                    <span>{room.size}</span>
-                    <span>&bull;</span>
-                    <span>{room.guests === "2 guests" ? `2 ${t.rooms.guests}` : `3 ${t.rooms.guests}`}</span>
-                  </div>
-                  <p className="mt-3 font-sans text-xs font-light text-matte-black/65 leading-relaxed line-clamp-2">
-                    {getLocalizedTone(room.slug)}
-                  </p>
-                  <div className="mt-5 pt-3 border-t border-matte-black/5 flex items-center justify-between">
-                    <span className="font-poppins text-[9px] font-bold uppercase tracking-wider text-matte-black/80 flex items-center gap-1 group-hover:text-olive transition">
-                      {t.rooms.learnMore} <ArrowRight size={11} />
-                    </span>
-                  </div>
+                <div className={`w-full md:w-2/5 flex flex-col justify-center ${index % 2 === 1 ? 'md:order-1 md:items-end md:text-right' : 'md:items-start md:text-left'}`}>
+                  <FadeIn delay={0.1} direction={index % 2 === 1 ? "left" : "right"}>
+                    <p className="font-poppins text-[10px] font-bold uppercase tracking-widest text-gold mb-3">
+                      {formatCurrency(room.price)} / {t.rooms.night}
+                    </p>
+                  </FadeIn>
+                  <FadeIn delay={0.2} direction={index % 2 === 1 ? "left" : "right"}>
+                    <h3 className="font-serif text-3xl md:text-4xl font-light text-cream tracking-wide">
+                      {getLocalizedName(room.slug)}
+                    </h3>
+                  </FadeIn>
+                  <FadeIn delay={0.3} direction={index % 2 === 1 ? "left" : "right"}>
+                    <div className={`flex gap-3 mt-4 text-cream/50 font-sans text-[9px] font-bold uppercase tracking-widest ${index % 2 === 1 ? 'justify-end' : 'justify-start'}`}>
+                      <span>{room.size}</span>
+                      <span>&mdash;</span>
+                      <span>{room.guests === "2 guests" ? `2 ${t.rooms.guests}` : `3 ${t.rooms.guests}`}</span>
+                    </div>
+                  </FadeIn>
+                  <FadeIn delay={0.4} direction={index % 2 === 1 ? "left" : "right"}>
+                    <p className="mt-6 font-sans text-xs font-light text-cream/70 leading-relaxed max-w-md">
+                      {getLocalizedTone(room.slug)}
+                    </p>
+                  </FadeIn>
+                  <FadeIn delay={0.5} direction={index % 2 === 1 ? "left" : "right"}>
+                    <button onClick={() => setActiveRoom(room)} className="mt-8 font-sans text-[10px] font-bold uppercase tracking-widest text-cream flex items-center gap-2 group-hover:text-gold transition">
+                      {t.rooms.learnMore} <ArrowRight size={11} className="transition-transform group-hover:translate-x-1" />
+                    </button>
+                  </FadeIn>
                 </div>
               </motion.div>
             ))}
           </AnimatePresence>
         </div>
-
       </div>
 
-      {/* Lightbox / Detail Side Panel Modal */}
+      {/* Lightbox / Detail Side Panel Modal (Dark Luxury Theme) */}
       <AnimatePresence>
         {activeRoom && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[120] flex items-center justify-end bg-matte-black/60 p-0 md:p-4 backdrop-blur-sm"
+            className="fixed inset-0 z-[120] flex items-center justify-end bg-matte-black/80 p-0 md:p-4 backdrop-blur-md"
           >
-            {/* Click backdrop to close */}
             <div className="absolute inset-0" onClick={() => setActiveRoom(null)} />
 
-            {/* Panel */}
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 32, stiffness: 210 }}
-              className="relative z-10 flex h-full w-full max-w-2xl flex-col bg-cream shadow-2xl md:h-[calc(100vh-32px)] md:rounded-[12px] overflow-hidden"
+              className="relative z-10 flex h-full w-full max-w-2xl flex-col bg-matte-black border-l border-white/5 shadow-2xl md:h-[calc(100vh-32px)] md:rounded-[4px] overflow-hidden"
             >
               {/* Image Section */}
-              <div className="relative h-64 w-full shrink-0 bg-matte-black md:h-80">
+              <div className="relative h-72 w-full shrink-0 bg-matte-black md:h-96">
                 <Image
                   src={activeRoom.image}
                   alt={getLocalizedName(activeRoom.slug)}
                   fill
                   className="image-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60" />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/80" />
                 <button
                   type="button"
                   onClick={() => setActiveRoom(null)}
-                  className="absolute right-4 top-4 z-30 flex h-8 w-8 items-center justify-center rounded-full bg-cream/90 text-matte-black shadow-lg hover:bg-cream"
+                  className="absolute right-4 top-4 z-30 flex h-10 w-10 items-center justify-center rounded-full bg-black/40 text-cream backdrop-blur-md border border-white/10 hover:bg-black/60 transition"
                 >
                   <X size={15} />
                 </button>
               </div>
 
               {/* Scrollable details */}
-              <div className="flex-1 overflow-y-auto p-6 md:p-8">
+              <div className="flex-1 overflow-y-auto p-8 md:p-12">
                 <div>
-                  <span className="font-poppins text-[10px] font-bold uppercase tracking-widest text-olive">
+                  <span className="font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-gold">
                     Tehri Lake, Uttarakhand
                   </span>
-                  <h3 className="font-serif text-2xl md:text-3xl font-light text-matte-black mt-1.5">
+                  <h3 className="font-serif text-3xl md:text-4xl font-light text-cream mt-2 tracking-wide">
                     {getLocalizedName(activeRoom.slug)}
                   </h3>
                   
                   {/* Details strip */}
-                  <div className="mt-4 flex flex-wrap gap-4 border-y border-matte-black/5 py-3">
-                    <div className="flex items-center gap-2 text-matte-black/70">
-                      <LayoutGrid size={14} className="text-olive" />
-                      <span className="font-sans text-[10px] font-semibold uppercase tracking-wider">{t.rooms.size}: {activeRoom.size}</span>
+                  <div className="mt-6 flex flex-wrap gap-6 border-y border-white/10 py-4">
+                    <div className="flex items-center gap-2 text-cream/70">
+                      <LayoutGrid size={14} className="text-gold" />
+                      <span className="font-sans text-[10px] font-semibold uppercase tracking-widest">{t.rooms.size}: {activeRoom.size}</span>
                     </div>
-                    <div className="flex items-center gap-2 text-matte-black/70">
-                      <Users size={14} className="text-olive" />
-                      <span className="font-sans text-[10px] font-semibold uppercase tracking-wider">{t.rooms.guests}: {activeRoom.guests === "2 guests" ? `2 ${t.rooms.guests}` : `3 ${t.rooms.guests}`}</span>
+                    <div className="flex items-center gap-2 text-cream/70">
+                      <Users size={14} className="text-gold" />
+                      <span className="font-sans text-[10px] font-semibold uppercase tracking-widest">{t.rooms.guests}: {activeRoom.guests === "2 guests" ? `2 ${t.rooms.guests}` : `3 ${t.rooms.guests}`}</span>
                     </div>
                   </div>
 
-                  <p className="mt-6 font-sans text-xs font-light text-matte-black/75 leading-relaxed">
+                  <p className="mt-8 font-sans text-xs font-light text-cream/70 leading-relaxed tracking-wide">
                     {getLocalizedTone(activeRoom.slug)}
                   </p>
                 </div>
 
                 {/* Amenities */}
-                <div className="mt-8">
-                  <h4 className="font-poppins text-[9px] font-bold uppercase tracking-widest text-matte-black/50 mb-3">
+                <div className="mt-12">
+                  <h4 className="font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-cream/50 mb-4">
                     {t.rooms.includes}
                   </h4>
-                  <div className="grid gap-2.5 sm:grid-cols-2">
+                  <div className="grid gap-3 sm:grid-cols-2">
                     {activeRoom.amenities.map((amenity) => (
                       <div
                         key={amenity}
-                        className="flex items-center gap-2.5 rounded-[6px] border border-matte-black/5 bg-beige/10 p-2.5"
+                        className="flex items-center gap-3 rounded-sm border border-white/5 bg-white/5 p-3"
                       >
                         <Sparkles size={11} className="text-gold" />
-                        <span className="font-sans text-xs text-matte-black/80">{amenity}</span>
+                        <span className="font-sans text-[11px] font-light text-cream/90">{amenity}</span>
                       </div>
                     ))}
                   </div>
@@ -229,15 +237,15 @@ export function RoomsSection() {
               </div>
 
               {/* Sticky booking footer inside panel */}
-              <div className="border-t border-matte-black/5 bg-beige/10 p-6 md:p-8 flex items-center justify-between shrink-0">
+              <div className="border-t border-white/10 bg-matte-black p-6 md:p-8 flex items-center justify-between shrink-0">
                 <div>
-                  <p className="font-sans text-[9px] uppercase tracking-widest text-matte-black/40">Estimated Rate</p>
-                  <p className="font-serif text-xl text-olive font-light">{formatCurrency(activeRoom.price)} <span className="text-xs font-sans text-matte-black/50">/ {t.rooms.night}</span></p>
+                  <p className="font-sans text-[9px] uppercase tracking-[0.2em] text-cream/40 mb-1">Estimated Rate</p>
+                  <p className="font-serif text-2xl text-gold font-light">{formatCurrency(activeRoom.price)} <span className="text-xs font-sans text-cream/40">/ {t.rooms.night}</span></p>
                 </div>
                 <Link
                   href="/booking"
                   onClick={() => setActiveRoom(null)}
-                  className="btn btn-olive text-[10px] tracking-wider py-2.5 h-auto min-h-0"
+                  className="btn btn-primary text-[10px]"
                 >
                   {t.rooms.book}
                 </Link>

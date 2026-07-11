@@ -1,22 +1,19 @@
-import type { PrismaClient } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 
-// Conditional require to prevent module load failures in locked environments
+// Safe instantiation using standard ES imports to ensure Webpack compatibility in Server Actions
 let prisma: PrismaClient | null = null;
 
 try {
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
-  const { PrismaClient: LocalClient } = require("@prisma/client");
-  
   const globalForPrisma = globalThis as unknown as {
     prisma: PrismaClient | undefined;
   };
   
   if (!globalForPrisma.prisma) {
-    globalForPrisma.prisma = new LocalClient();
+    globalForPrisma.prisma = new PrismaClient();
   }
-  prisma = globalForPrisma.prisma || null;
+  prisma = globalForPrisma.prisma;
 } catch (error) {
-  console.warn("Prisma Client failed to load or is ungenerated. Graceful static fallback will be active.", error);
+  console.warn("Prisma Client failed to instantiate. Database queries will fall back to static registry.", error);
 }
 
 export { prisma };

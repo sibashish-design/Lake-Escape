@@ -2,10 +2,12 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ArrowRight, Sun, Sparkles, Compass, Utensils } from "lucide-react";
 import { media } from "@/lib/data";
 import { useLanguage } from "@/providers/LanguageProvider";
+import { FadeIn } from "@/components/ui/FadeIn";
 
 export function ExperiencesSection() {
   const { t } = useLanguage();
@@ -55,101 +57,114 @@ export function ExperiencesSection() {
   };
 
   return (
-    <section id="experiences" className="section bg-beige text-matte-black border-t border-matte-black/5 py-24">
-      <div className="container max-w-6xl">
+    <section id="experiences" className="relative bg-matte-black text-cream min-h-[90vh] md:min-h-screen flex items-center overflow-hidden border-t border-white/5">
+      
+      {/* Dynamic Background Image */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={activeSlide}
+          initial={{ opacity: 0, scale: 1.05 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 1.05 }}
+          transition={{ duration: 1.2, ease: "easeInOut" }}
+          className="absolute inset-0 z-0"
+        >
+          <Image
+            src={experiencesList[activeSlide].image}
+            alt={experiencesList[activeSlide].title}
+            fill
+            className="object-cover opacity-60"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-matte-black/90 via-matte-black/60 to-transparent" />
+        </motion.div>
+      </AnimatePresence>
+
+      {/* Main Content Container */}
+      <div className="container max-w-7xl relative z-10 grid md:grid-cols-2 gap-12 lg:gap-24 px-6 py-24">
         
-        {/* Section Header (Pulso diary title layout) */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-          <div className="max-w-xl">
-            <p className="font-cursive text-3xl text-gold mb-1 select-none leading-none">{t.experiences.eyebrow}</p>
-            <h2 className="font-serif text-3xl font-light tracking-wide text-matte-black md:text-4xl leading-tight">
-              {t.experiences.title}
-            </h2>
+        {/* Left Column: Fixed Headers & Controls */}
+        <div className="flex flex-col justify-between h-full">
+          <div>
+            <FadeIn delay={0.1}>
+              <p className="font-cursive text-4xl text-gold mb-4 select-none leading-none drop-shadow-sm">{t.experiences.eyebrow}</p>
+            </FadeIn>
+            <FadeIn delay={0.2}>
+              <h2 className="font-serif text-4xl font-light tracking-wider text-cream md:text-5xl leading-tight">
+                {t.experiences.title}
+              </h2>
+            </FadeIn>
           </div>
-          
-          {/* Slider controls next to title */}
-          <div className="flex gap-2 shrink-0">
-            <button
-              type="button"
-              onClick={handlePrev}
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-matte-black/10 hover:bg-cream transition"
-              aria-label="Previous slide"
-            >
-              <ArrowLeft size={14} />
-            </button>
-            <button
-              type="button"
-              onClick={handleNext}
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-matte-black/10 hover:bg-cream transition"
-              aria-label="Next slide"
-            >
-              <ArrowRight size={14} />
-            </button>
-          </div>
+
+          <FadeIn delay={0.3}>
+            <div className="flex gap-4 mt-12 md:mt-24">
+              <button
+                type="button"
+                onClick={handlePrev}
+                className="flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-black/20 backdrop-blur-md hover:bg-cream hover:text-matte-black hover:border-transparent transition-all duration-300"
+                aria-label="Previous slide"
+              >
+                <ArrowLeft size={16} />
+              </button>
+              <button
+                type="button"
+                onClick={handleNext}
+                className="flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-black/20 backdrop-blur-md hover:bg-cream hover:text-matte-black hover:border-transparent transition-all duration-300"
+                aria-label="Next slide"
+              >
+                <ArrowRight size={16} />
+              </button>
+            </div>
+          </FadeIn>
         </div>
 
-        {/* Swipe Card Content (Pulso card-agenda replica) */}
-        <div className="relative overflow-hidden min-h-[460px] md:min-h-[380px] bg-cream/45 border border-matte-black/5 rounded-[8px] p-6 shadow-sm">
+        {/* Right Column: Floating Dark Content Box */}
+        <div className="flex items-center">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeSlide}
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -30 }}
-              transition={{ duration: 0.4 }}
-              className="grid gap-8 md:grid-cols-[1.1fr_0.9fr] items-center h-full"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -30 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="bg-matte-black/80 backdrop-blur-xl border border-white/10 p-8 md:p-12 w-full rounded-sm shadow-2xl"
             >
-              {/* Left Column: Image wrapper with zoom */}
-              <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[6px] bg-matte-black shadow-sm">
-                <Image
-                  src={experiencesList[activeSlide].image}
-                  alt={experiencesList[activeSlide].title}
-                  fill
-                  className="image-cover opacity-90 transition-transform duration-[6000ms] ease-out hover:scale-105"
-                  sizes="(max-width: 1024px) 100vw, 45vw"
-                />
-                <div className="absolute top-3 left-3 bg-cream/90 backdrop-blur-sm px-2.5 py-1 rounded-[4px] border border-matte-black/5 flex items-center gap-1.5 text-olive font-poppins text-[9px] font-bold tracking-wider">
-                  <GlobeIcon active={activeSlide} />
-                  <span>{experiencesList[activeSlide].time}</span>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="flex items-center justify-center h-8 w-8 rounded-full bg-gold/20 text-gold">
+                  {(() => {
+                    const Icon = experiencesList[activeSlide].icon;
+                    return <Icon size={14} />;
+                  })()}
                 </div>
+                <span className="font-sans text-[10px] font-bold uppercase tracking-[0.3em] text-gold">
+                  {experiencesList[activeSlide].time}
+                </span>
               </div>
 
-              {/* Right Column: Experience Details */}
-              <div className="flex flex-col justify-between h-full py-2">
-                <div className="space-y-4">
-                  <h3 className="font-serif text-2xl font-light text-matte-black">
-                    {experiencesList[activeSlide].title}
-                  </h3>
-                  <p className="font-sans text-xs font-light text-matte-black/70 leading-relaxed">
-                    {experiencesList[activeSlide].text}
-                  </p>
-                </div>
-                
-                <div className="pt-6 border-t border-matte-black/5 flex justify-between items-center text-olive font-poppins text-[9px] font-bold uppercase tracking-wider">
-                  <span>0{activeSlide + 1} / 0{experiencesList.length}</span>
-                  <a href="/experiences" className="hover:text-matte-black transition flex items-center gap-1">
-                    Explore Details <ArrowRight size={10} />
-                  </a>
-                </div>
+              <h3 className="font-serif text-3xl font-light text-cream mb-6 tracking-wide">
+                {experiencesList[activeSlide].title}
+              </h3>
+              
+              <p className="font-sans text-sm font-light text-cream/70 leading-relaxed tracking-wide mb-10">
+                {experiencesList[activeSlide].text}
+              </p>
+              
+              <div className="flex justify-between items-center border-t border-white/10 pt-6">
+                <span className="font-sans text-[9px] font-bold uppercase tracking-[0.3em] text-cream/40">
+                  0{activeSlide + 1} / 0{experiencesList.length}
+                </span>
+                <Link 
+                  href="/experiences" 
+                  className="font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-gold hover:text-cream transition flex items-center gap-2"
+                >
+                  Explore <ArrowRight size={12} />
+                </Link>
               </div>
-
             </motion.div>
           </AnimatePresence>
         </div>
 
       </div>
     </section>
-  );
-}
-
-function GlobeIcon({ active }: { active: number }) {
-  // Simple helper to return the matching icon dynamically
-  return (
-    <span className="shrink-0 mt-0.5">
-      {active === 0 && <span className="block h-1.5 w-1.5 rounded-full bg-yellow-500 animate-pulse" />}
-      {active === 1 && <span className="block h-1.5 w-1.5 rounded-full bg-blue-500 animate-pulse" />}
-      {active === 2 && <span className="block h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse" />}
-      {active === 3 && <span className="block h-1.5 w-1.5 rounded-full bg-red-500 animate-pulse" />}
-    </span>
   );
 }
