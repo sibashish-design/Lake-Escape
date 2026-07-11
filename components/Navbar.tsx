@@ -65,8 +65,8 @@ export function Navbar() {
       <header
         className={`fixed left-0 right-0 top-0 z-50 transition-all duration-500 ease-in-out ${
           isScrolled
-            ? "bg-matte-black/95 py-4 shadow-2xl border-b border-white/5 backdrop-blur-xl text-cream"
-            : "bg-transparent py-8 text-cream"
+            ? "bg-matte-black/95 py-0 shadow-2xl border-b border-white/5 backdrop-blur-xl text-cream"
+            : "bg-transparent py-0 text-cream"
         }`}
       >
         <div className="mx-auto flex w-full max-w-[1440px] items-center justify-between px-6">
@@ -77,7 +77,7 @@ export function Navbar() {
               src="/media/White%20logo.png"
               alt="Lake Escape Logo"
               className={`w-auto object-contain transition-all duration-500 ${
-                isScrolled ? "h-9 md:h-10" : "h-14 md:h-16"
+                isScrolled ? "h-30 md:h-30" : "h-30 md:h-30"
               }`}
             />
           </Link>
@@ -175,7 +175,7 @@ export function Navbar() {
 
             <motion.div variants={linkVariants} className="mt-8 flex flex-col gap-6">
               <Link
-                className="btn btn-primary w-full text-center py-4 min-h-0 h-auto"
+                className="btn btn-primary w-full text-center py-1 min-h-0 h-auto"
                 href="/booking"
                 onClick={() => setOpen(false)}
               >
