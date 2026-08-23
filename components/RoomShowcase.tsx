@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, BedDouble, ChevronLeft, ChevronRight, Expand, Maximize2, Sparkles, Users, X } from "lucide-react";
+import { BedDouble, ChevronLeft, ChevronRight, Expand, Maximize2, Users, X } from "lucide-react";
 import { rooms, RoomData } from "@/lib/data";
 
 export function RoomShowcase() {

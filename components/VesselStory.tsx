@@ -1,8 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowRight, Compass, ShieldCheck, Sparkles, Wind } from "lucide-react";
+import { Sparkles, Wind } from "lucide-react";
 import { vesselSpecs } from "@/lib/data";
 
 export function VesselStory() {

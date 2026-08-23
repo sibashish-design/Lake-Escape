@@ -2,11 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { 
-  Anchor, ArrowRight, Check, Compass, Cpu, Layers, 
-  Radio, ShieldCheck, Sparkles, Sun, Users, Wind, Zap 
-} from "lucide-react";
-import { vesselSpecs } from "@/lib/data";
+import { Compass, Layers, Radio, Wind } from "lucide-react";
 
 export default function VesselPage() {
   return (

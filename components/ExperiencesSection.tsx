@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Clock, Compass, Sparkles } from "lucide-react";
+import { ArrowRight, Clock } from "lucide-react";
 import { experiences } from "@/lib/data";
 
 export function ExperiencesSection() {

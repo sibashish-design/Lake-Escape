@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, BedDouble, Compass, Layers, Sparkles, Utensils, Wifi, Wind } from "lucide-react";
+import { ArrowRight, Compass, Layers, Wifi, Wind } from "lucide-react";
 import { Hero } from "@/components/Hero";
 import { BrandStatement } from "@/components/BrandStatement";
 import { rooms, experiences, galleryPhotos } from "@/lib/data";

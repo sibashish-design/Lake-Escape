@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Clock, Compass, ShieldCheck, Sparkles, Sun, Utensils, Bike, Wine } from "lucide-react";
+import { Clock, Sparkles } from "lucide-react";
 import { experiences } from "@/lib/data";
 
 export default function ExperiencesPage() {

@@ -1,24 +1,24 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { 
-  Bell, Calendar, Check, ChevronDown, ChevronRight, Clock, 
-  Compass, Eye, Heart, Info, Lock, MapPin, 
-  Maximize2, Moon, Phone, ShieldCheck, Sparkles, Star, 
+  Bell, Calendar, Check, ChevronDown, Clock, 
+  Compass, Eye, Lock, MapPin, 
+  Phone, Sparkles, 
   Trash2, User, Users, Wifi, Wine, X, ArrowLeft, ArrowRight
 } from "lucide-react";
 import { rooms, RoomData } from "@/lib/data";
 
-export default function BookingPage() {
+function BookingContent() {
   const searchParams = useSearchParams();
 
   // Search parameters state
   const [adults, setAdults] = useState(2);
   const [children, setChildren] = useState(0);
-  const [roomsCount, setRoomsCount] = useState(1);
+  const [roomsCount] = useState(1);
   const [checkInDate, setCheckInDate] = useState("2026-08-24");
   const [checkOutDate, setCheckOutDate] = useState("2026-08-26");
   const [guestDropdownOpen, setGuestDropdownOpen] = useState(false);
@@ -653,7 +653,7 @@ export default function BookingPage() {
                   <span className="text-slate-500 font-semibold text-[11px]">Sort By:</span>
                   <select
                     value={sortBy}
-                    onChange={(e) => setSortBy(e.target.value as any)}
+                    onChange={(e) => setSortBy(e.target.value as "price-asc" | "price-desc" | "size")}
                     className="bg-slate-50 border border-slate-300 rounded-md px-2.5 py-1 text-xs font-semibold focus:outline-none cursor-pointer text-slate-800 tracking-[-0.01em]"
                   >
                     <option value="price-asc">Price (Lowest First)</option>
@@ -984,5 +984,19 @@ export default function BookingPage() {
       )}
 
     </main>
+  );
+}
+
+export default function BookingPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-[#081218] text-white flex items-center justify-center font-sans text-sm font-semibold">
+          Loading reservation engine...
+        </div>
+      }
+    >
+      <BookingContent />
+    </Suspense>
   );
 }

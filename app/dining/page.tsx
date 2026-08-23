@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Utensils, Wine, Sparkles, Clock, Check, Coffee, Flame, Heart } from "lucide-react";
+import { Utensils, Wine, Coffee, Flame } from "lucide-react";
 import { cuisines } from "@/lib/data";
 
 export default function DiningPage() {

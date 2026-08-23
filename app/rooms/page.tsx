@@ -3,8 +3,8 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { BedDouble, Check, Compass, Expand, Maximize2, ShieldCheck, Sparkles, Users, Wifi, Wine, ArrowRight } from "lucide-react";
-import { rooms, RoomData } from "@/lib/data";
+import { BedDouble, Check, Expand, Sparkles, Users, ArrowRight } from "lucide-react";
+import { rooms } from "@/lib/data";
 
 export default function RoomsPage() {
   const [activeImageMap, setActiveImageMap] = useState<Record<string, number>>({

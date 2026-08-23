@@ -3,11 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { 
-  Calendar, Check, ChevronRight, Compass, Download, 
-  Eye, Heart, LogOut, Mail, MapPin, Phone, ShieldCheck, 
-  Sparkles, Star, User, Wifi, Wine, Clock, AlertCircle, ArrowRight
-} from "lucide-react";
+import { Download, Mail } from "lucide-react";
 
 interface ReservationItem {
   id: string;
@@ -26,46 +22,45 @@ interface ReservationItem {
   createdAt: string;
 }
 
+const defaultSampleReservations: ReservationItem[] = [
+  {
+    id: "LE-894120",
+    roomName: "The Presidential Lake Suite",
+    roomCategory: "Signature Master Suite",
+    image: "/images/rooms/suite-room/primary.jpg",
+    checkIn: "2026-08-28",
+    checkOut: "2026-08-30",
+    nights: 2,
+    guests: "2 Adults",
+    total: 40590,
+    guestName: "Aarav Kapoor",
+    email: "aarav.kapoor@example.com",
+    phone: "+91 98765 12345",
+    status: "CONFIRMED",
+    createdAt: "2026-08-23T10:30:00Z",
+  },
+  {
+    id: "LE-772910",
+    roomName: "The Morning Dew Cabin",
+    roomCategory: "Deluxe Lakefront Cabin",
+    image: "/images/rooms/room-1/primary.jpg",
+    checkIn: "2026-06-12",
+    checkOut: "2026-06-14",
+    nights: 2,
+    guests: "2 Adults",
+    total: 30444,
+    guestName: "Aarav Kapoor",
+    email: "aarav.kapoor@example.com",
+    phone: "+91 98765 12345",
+    status: "COMPLETED",
+    createdAt: "2026-06-01T12:00:00Z",
+  }
+];
+
 export default function ProfilePage() {
   const [activeTab, setActiveTab] = useState<"reservations" | "preferences" | "security">("reservations");
   const [reservations, setReservations] = useState<ReservationItem[]>([]);
   const [downloadSuccess, setDownloadSuccess] = useState<string | null>(null);
-
-  // Default sample reservations
-  const defaultSampleReservations: ReservationItem[] = [
-    {
-      id: "LE-894120",
-      roomName: "The Presidential Lake Suite",
-      roomCategory: "Signature Master Suite",
-      image: "/images/rooms/suite-room/primary.jpg",
-      checkIn: "2026-08-28",
-      checkOut: "2026-08-30",
-      nights: 2,
-      guests: "2 Adults",
-      total: 40590,
-      guestName: "Aarav Kapoor",
-      email: "aarav.kapoor@example.com",
-      phone: "+91 98765 12345",
-      status: "CONFIRMED",
-      createdAt: "2026-08-23T10:30:00Z",
-    },
-    {
-      id: "LE-772910",
-      roomName: "The Morning Dew Cabin",
-      roomCategory: "Deluxe Lakefront Cabin",
-      image: "/images/rooms/room-1/primary.jpg",
-      checkIn: "2026-06-12",
-      checkOut: "2026-06-14",
-      nights: 2,
-      guests: "2 Adults",
-      total: 30444,
-      guestName: "Aarav Kapoor",
-      email: "aarav.kapoor@example.com",
-      phone: "+91 98765 12345",
-      status: "COMPLETED",
-      createdAt: "2026-06-01T12:00:00Z",
-    }
-  ];
 
   useEffect(() => {
     if (typeof window !== "undefined") {

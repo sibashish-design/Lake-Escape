@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, ChevronLeft, ChevronRight, Expand, Filter, Maximize2, Sparkles, X } from "lucide-react";
+import { ChevronLeft, ChevronRight, Maximize2, Sparkles, X } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -211,7 +211,7 @@ export default function GalleryPage() {
           ].map((tab) => (
             <button
               key={tab.id}
-              onClick={() => setFilter(tab.id as any)}
+              onClick={() => setFilter(tab.id as "all" | "suites" | "scenery" | "balconies" | "details")}
               className={`font-sans text-xs font-semibold tracking-[-0.01em] px-4 py-2 rounded-lg transition-all duration-200 ${
                 filter === tab.id
                   ? "bg-white text-[#081218] font-bold shadow-md"

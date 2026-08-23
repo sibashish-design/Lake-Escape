@@ -1,4 +1,4 @@
-import { Anchor, Bath, BedDouble, Bike, CalendarDays, ChefHat, Flame, Mountain, Ship, Sparkles, Sun, Utensils, Wifi, Wine, Compass, ShieldCheck } from "lucide-react";
+import { Bike, Sparkles, Sun, Utensils } from "lucide-react";
 
 export const media = {
   heroVideo: "/media/header-video-1.mp4",
