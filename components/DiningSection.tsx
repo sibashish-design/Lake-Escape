@@ -1,97 +1,66 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
-import { media } from "@/lib/data";
-import { useLanguage } from "@/providers/LanguageProvider";
-import { FadeIn } from "@/components/ui/FadeIn";
-import { ParallaxImage } from "@/components/ui/ParallaxImage";
+import { Utensils, Wine, Sparkles } from "lucide-react";
 
 export function DiningSection() {
-  const { t } = useLanguage();
-
   return (
-    <section id="dining" className="bg-matte-black text-cream border-t border-white/5 pt-32 pb-0">
-      
-      {/* Section Header */}
-      <div className="container max-w-7xl px-6 mb-20 text-center mx-auto">
-        <FadeIn delay={0.1} direction="up">
-          <p className="font-cursive text-4xl text-gold mb-3 select-none leading-none drop-shadow-sm">{t.dining.eyebrow}</p>
-        </FadeIn>
-        <FadeIn delay={0.2} direction="up">
-          <h2 className="font-serif text-4xl font-light tracking-wider text-cream md:text-5xl leading-tight">
-            {t.dining.title}
-          </h2>
-        </FadeIn>
-        <FadeIn delay={0.3} direction="up">
-          <p className="mt-6 font-sans text-sm font-light text-cream/60 leading-relaxed max-w-2xl mx-auto tracking-wide">
-            {t.dining.text}
-          </p>
-        </FadeIn>
+    <section
+      id="dining"
+      className="relative w-full min-h-[75vh] flex items-center bg-[#081218] text-white overflow-hidden py-24 sm:py-32 px-6 sm:px-12 border-b border-white/[0.12]"
+    >
+      {/* Background Ambience Image */}
+      <div className="absolute inset-0 w-full h-full">
+        <Image
+          src="/images/rooms/suite-room/interior-2.jpg"
+          alt="Floating Lake Dining Experience"
+          fill
+          className="object-cover object-center opacity-40 animate-kenburns"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#081218] via-[#081218]/85 to-[#081218]/50" />
       </div>
 
-      {/* Edge-to-Edge Restaurant Blocks */}
-      <div className="flex flex-col w-full">
-        
-        {/* Restaurant 1: Bistrô */}
-        <div className="relative h-[70vh] md:h-[85vh] w-full overflow-hidden">
-          <ParallaxImage src={media.boatTwo} alt={t.dining.bistro} />
+      <div className="relative z-10 max-w-[1400px] mx-auto w-full">
+        <div className="max-w-xl bg-[#081218]/90 p-8 sm:p-12 rounded-xl border border-white/15 backdrop-blur-xl shadow-2xl space-y-6">
           
-          <div className="absolute inset-0 bg-gradient-to-t from-matte-black/90 via-matte-black/20 to-transparent pointer-events-none opacity-80" />
-          
-          {/* Floating Dark Content Box */}
-          <div className="absolute bottom-0 left-0 right-0 p-8 md:p-16 flex flex-col md:flex-row md:items-end justify-between gap-8 z-10 container max-w-7xl mx-auto">
-            <div className="max-w-xl">
-              <FadeIn delay={0.1}>
-                <h3 className="font-serif text-3xl md:text-5xl font-light text-cream mb-4">{t.dining.bistro}</h3>
-              </FadeIn>
-              <FadeIn delay={0.2}>
-                <p className="font-sans text-sm md:text-base font-light text-cream/80 leading-relaxed tracking-wide">
-                  {t.dining.bistroDesc}
-                </p>
-              </FadeIn>
-            </div>
-            
-            <FadeIn delay={0.3} direction="left">
-              <Link
-                href="/dining"
-                className="btn btn-primary bg-gold text-matte-black min-w-[200px]"
-              >
-                {t.dining.learnMore}
-              </Link>
-            </FadeIn>
+          <div className="flex items-center gap-2 text-slate-300">
+            <Utensils size={15} />
+            <span className="font-sans text-[12px] font-semibold uppercase tracking-[-0.01em]">
+              Culinary Artistry
+            </span>
           </div>
-        </div>
 
-        {/* Restaurant 2: Boulangerie */}
-        <div className="relative h-[70vh] md:h-[85vh] w-full overflow-hidden">
-          <ParallaxImage src={media.sunset} alt={t.dining.boulangerie} />
-          
-          <div className="absolute inset-0 bg-gradient-to-t from-matte-black/90 via-matte-black/20 to-transparent pointer-events-none opacity-80" />
-          
-          {/* Floating Dark Content Box */}
-          <div className="absolute bottom-0 left-0 right-0 p-8 md:p-16 flex flex-col md:flex-row md:items-end justify-between gap-8 z-10 container max-w-7xl mx-auto">
-            <div className="max-w-xl">
-              <FadeIn delay={0.1}>
-                <h3 className="font-serif text-3xl md:text-5xl font-light text-cream mb-4">{t.dining.boulangerie}</h3>
-              </FadeIn>
-              <FadeIn delay={0.2}>
-                <p className="font-sans text-sm md:text-base font-light text-cream/80 leading-relaxed tracking-wide">
-                  {t.dining.boulangerieDesc}
-                </p>
-              </FadeIn>
+          <h2 className="font-heading text-3xl sm:text-5xl font-extrabold text-white leading-tight tracking-[-0.035em]">
+            Floating Deck Gastronomy
+          </h2>
+
+          <p className="font-sans text-sm font-normal text-slate-300 leading-relaxed tracking-[-0.01em]">
+            Dine surrounded by tranquil mountain waters. Our dedicated executive chef curates bespoke menus combining rare Himalayan mountain herbs, fresh lake catch, and international wood-fired grilling on the open deck.
+          </p>
+
+          <div className="grid grid-cols-2 gap-3 border-t border-white/[0.12] pt-5 font-sans text-xs font-semibold text-slate-300 tracking-[-0.01em]">
+            <div className="flex items-center gap-2">
+              <Sparkles size={14} className="text-slate-400" />
+              <span>Private Chef on Board</span>
             </div>
-            
-            <FadeIn delay={0.3} direction="left">
-              <Link
-                href="/dining"
-                className="btn btn-primary bg-gold text-matte-black min-w-[200px]"
-              >
-                {t.dining.learnMore}
-              </Link>
-            </FadeIn>
+            <div className="flex items-center gap-2">
+              <Wine size={14} className="text-slate-400" />
+              <span>Curated Cellar List</span>
+            </div>
           </div>
-        </div>
 
+          <div className="pt-2">
+            <Link
+              href="/booking"
+              className="btn btn-primary w-full sm:w-auto"
+            >
+              Book Dining Experience
+            </Link>
+          </div>
+
+        </div>
       </div>
     </section>
   );

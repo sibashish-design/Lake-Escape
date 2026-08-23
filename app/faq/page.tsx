@@ -17,7 +17,7 @@ export default function FaqPage() {
       <section className="section bg-cream text-matte-black border-t border-matte-black/5">
         <div className="container max-w-3xl">
           <div className="grid gap-4">
-            {faqs.map(([question, answer]) => (
+            {faqs.map(([question, answer]: [string, string]) => (
               <details 
                 className="reveal group rounded-[8px] border border-matte-black/5 bg-beige/10 p-6 transition-all duration-300 [&_summary::-webkit-details-marker]:hidden" 
                 key={question}

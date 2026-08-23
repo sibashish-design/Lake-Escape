@@ -1,125 +1,110 @@
 "use client";
 
 import Link from "next/link";
-import { Instagram, Mail, MapPin, Phone, ArrowUp } from "lucide-react";
-import { useLanguage } from "@/providers/LanguageProvider";
+import { ArrowUp, Compass, Mail, MapPin, Phone } from "lucide-react";
+import { navItems } from "@/lib/data";
 
 export function Footer() {
-  const { t, locale } = useLanguage();
-
   const handleScrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const localizedNavLinks = [
-    { label: t.nav.rooms, href: "/rooms" },
-    { label: t.nav.experiences, href: "/experiences" },
-    { label: t.nav.dining, href: "/dining" },
-    { label: t.nav.gallery, href: "/gallery" },
-    { label: t.nav.journey, href: "/#journey" },
-    { label: t.nav.contact, href: "/contact" }
-  ];
-
   return (
-    <footer className="bg-olive px-6 py-20 text-cream border-t border-cream/5 relative z-10 pb-24 lg:pb-32">
-      <div className="mx-auto max-w-7xl">
-        {/* Main Footer Content */}
-        <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr] pb-16 border-b border-cream/10">
+    <footer id="location" className="relative w-full bg-[#040a0e] text-white pt-20 pb-12 px-6 sm:px-12 border-t border-white/[0.12]">
+      <div className="max-w-[1400px] mx-auto space-y-12">
+        
+        {/* Top Centered Brand Logo & Tagline */}
+        <div className="text-center space-y-3 max-w-xl mx-auto">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/media/White%20logo.png"
+            alt="Lake Escape"
+            className="h-14 mx-auto object-contain"
+          />
+          <p className="font-sans text-xs font-medium text-slate-400 tracking-[-0.01em]">
+            The Ultra-Luxury Floating Resort • Tehri Lake, Uttarakhand
+          </p>
+        </div>
+
+        {/* 3-Column Info & Navigation Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 border-y border-white/[0.12] py-10">
           
-          {/* Column 1: Brand Info */}
-          <div className="space-y-6">
-            <h2 className="font-serif text-2xl font-light tracking-wide">
-              Lake Escape
-            </h2>
-            <p className="font-sans text-xs font-light text-cream/70 leading-relaxed max-w-sm">
-              {t.footer.text}
-            </p>
-            <div className="flex gap-4">
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-9 w-9 items-center justify-center rounded-full bg-cream/5 text-cream transition hover:bg-cream hover:text-olive-dark"
-                aria-label="Instagram Profile"
-              >
-                <Instagram size={15} />
-              </a>
-              <a
-                href="mailto:stay@lakeescape.in"
-                className="flex h-9 w-9 items-center justify-center rounded-full bg-cream/5 text-cream transition hover:bg-cream hover:text-olive-dark"
-                aria-label="Email Reservations"
-              >
-                <Mail size={15} />
-              </a>
+          {/* Column 1: Location & Coordinates */}
+          <div className="space-y-3">
+            <span className="font-sans text-[12px] font-bold text-slate-300 uppercase block tracking-[-0.01em]">
+              Anchorage & Location
+            </span>
+            <div className="space-y-2 text-xs font-normal text-slate-300 tracking-[-0.01em]">
+              <p className="flex items-start gap-2.5">
+                <MapPin size={15} className="text-slate-400 shrink-0 mt-0.5" />
+                <span>Koti Colony Bay, Tehri Lake, New Tehri, Uttarakhand 249001, India</span>
+              </p>
+              <p className="flex items-center gap-2.5">
+                <Compass size={15} className="text-slate-400 shrink-0" />
+                <span>30.4002° N, 78.4357° E • Elevation 840m</span>
+              </p>
             </div>
           </div>
 
-          {/* Column 2: Navigation Links */}
-          <div className="space-y-4">
-            <h3 className="font-poppins text-[9px] font-bold uppercase tracking-widest text-gold">
-              {locale === "hi" ? "अन्वेषण" : "Explore"}
-            </h3>
-            <div className="grid gap-2.5">
-              {localizedNavLinks.map((item) => (
+          {/* Column 2: Quick Links */}
+          <div className="space-y-3 text-center md:text-left">
+            <span className="font-sans text-[12px] font-bold text-slate-300 uppercase block tracking-[-0.01em]">
+              Navigation
+            </span>
+            <div className="grid grid-cols-2 gap-2 text-xs font-semibold tracking-[-0.01em] text-slate-300">
+              {navItems.map((item) => (
                 <Link
                   key={item.label}
                   href={item.href}
-                  className="font-sans text-xs font-light text-cream/80 transition hover:text-gold w-fit"
+                  className="hover:text-white transition-colors"
                 >
                   {item.label}
                 </Link>
               ))}
-              <Link href="/faq" className="font-sans text-xs font-light text-cream/80 transition hover:text-gold w-fit">
-                FAQs
+              <Link href="/profile" className="hover:text-white transition-colors">
+                Guest Portal
+              </Link>
+              <Link href="/booking" className="hover:text-white transition-colors">
+                Reserve Suite
               </Link>
             </div>
           </div>
 
-          {/* Column 3: Contact & Address */}
-          <div className="space-y-4">
-            <h3 className="font-poppins text-[9px] font-bold uppercase tracking-widest text-gold">
-              {t.footer.contact}
-            </h3>
-            <div className="space-y-3 font-sans text-xs font-light text-cream/85">
-              <p className="flex items-start gap-2.5 leading-relaxed">
-                <MapPin size={15} className="text-gold shrink-0 mt-0.5" />
-                <span>{t.footer.address}</span>
+          {/* Column 3: Direct Reservations */}
+          <div className="space-y-3 md:text-right">
+            <span className="font-sans text-[12px] font-bold text-slate-300 uppercase block tracking-[-0.01em]">
+              Direct Concierge
+            </span>
+            <div className="space-y-2 text-xs font-normal text-slate-300 tracking-[-0.01em]">
+              <p className="flex items-center gap-2.5 justify-start md:justify-end">
+                <Phone size={14} className="text-slate-400 shrink-0" />
+                <a href="tel:+919876543210" className="hover:text-white transition">+91 98765 43210</a>
               </p>
-              <p className="flex items-center gap-2.5">
-                <Phone size={15} className="text-gold shrink-0" />
-                <span>+91 98765 43210</span>
+              <p className="flex items-center gap-2.5 justify-start md:justify-end">
+                <Mail size={14} className="text-slate-400 shrink-0" />
+                <a href="mailto:stay@lakeescape.in" className="hover:text-white transition">stay@lakeescape.in</a>
               </p>
-              <p className="flex items-center gap-2.5">
-                <Mail size={15} className="text-gold shrink-0" />
-                <span>stay@lakeescape.in</span>
+              <p className="text-[11px] font-sans text-slate-400 pt-1">
+                24/7 Stays & Private Boat Buyout Inquiries
               </p>
             </div>
           </div>
 
         </div>
 
-        {/* Bottom Bar: Copyright & Terms */}
-        <div className="mt-8 flex flex-col-reverse gap-4 sm:flex-row sm:items-center sm:justify-between font-sans text-[9px] uppercase tracking-widest text-cream/50">
-          <p>
-            {t.footer.copyright}
-          </p>
-          
-          <div className="flex flex-wrap gap-6">
-            <Link href="/privacy-policy" className="hover:text-cream transition">
-              {locale === "hi" ? "गोपनीयता नीति" : "Privacy Policy"}
-            </Link>
-            <Link href="/terms" className="hover:text-cream transition">
-              {locale === "hi" ? "नियम और शर्तें" : "Terms & Conditions"}
-            </Link>
-            <button
-              onClick={handleScrollToTop}
-              className="flex items-center gap-1.5 hover:text-cream transition group"
-            >
-              <span>{locale === "hi" ? "शीर्ष पर वापस जाएं" : "Back to Top"}</span>
-              <ArrowUp size={12} className="transition group-hover:-translate-y-0.5" />
-            </button>
-          </div>
+        {/* Bottom Bar */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-slate-400 font-sans text-xs tracking-[-0.01em]">
+          <p>© {new Date().getFullYear()} Lake Escape Resorts. All rights reserved.</p>
+
+          <button
+            onClick={handleScrollToTop}
+            className="flex items-center gap-2 hover:text-white transition group font-semibold"
+          >
+            <span>Back to Top</span>
+            <ArrowUp size={13} className="transition-transform duration-200 group-hover:-translate-y-1" />
+          </button>
         </div>
+
       </div>
     </footer>
   );

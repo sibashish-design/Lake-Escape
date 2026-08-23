@@ -1,96 +1,57 @@
 "use client";
 
 import Image from "next/image";
-import { media } from "@/lib/data";
-
-interface GalleryItem {
-  src: string;
-  alt: string;
-  spanClass: string;
-  category: string;
-}
-
-const galleryItems: GalleryItem[] = [
-  {
-    src: media.boatOne,
-    alt: "Lake Escape floating hotel exterior in morning mist",
-    spanClass: "md:col-span-2 md:row-span-2 aspect-[4/3] md:aspect-auto",
-    category: "Architecture"
-  },
-  {
-    src: media.sunset,
-    alt: "Tehri Lake mountain peaks at golden hour",
-    spanClass: "md:col-span-1 md:row-span-2 aspect-[3/4] md:aspect-auto",
-    category: "Landscape"
-  },
-  {
-    src: media.boatTwo,
-    alt: "Private deck lounge overlooking the lake",
-    spanClass: "md:col-span-1 md:row-span-1 aspect-[1.2/1] md:aspect-auto",
-    category: "Interiors"
-  },
-  {
-    src: media.boatOne,
-    alt: "Speedboat transit towards Lake Escape",
-    spanClass: "md:col-span-1 md:row-span-1 aspect-[1.2/1] md:aspect-auto",
-    category: "Adventure"
-  },
-  {
-    src: media.sunset,
-    alt: "Candlelit dining table setup on the outer deck",
-    spanClass: "md:col-span-2 md:row-span-1 aspect-[16/9] md:aspect-auto",
-    category: "Dining"
-  },
-  {
-    src: media.boatTwo,
-    alt: "Morning tea served on a private balcony",
-    spanClass: "md:col-span-1 md:row-span-1 aspect-[1.2/1] md:aspect-auto",
-    category: "Lifestyle"
-  }
-];
+import { galleryPhotos } from "@/lib/data";
 
 export function GallerySection() {
+  const marqueeItems = [...galleryPhotos, ...galleryPhotos];
+
   return (
-    <section id="gallery" className="section bg-cream text-matte-black border-t border-matte-black/5">
-      <div className="container">
-        {/* Section Header */}
-        <div className="reveal mb-16 max-w-xl">
-          <p className="eyebrow mb-4">Visual Stills</p>
-          <h2 className="font-serif text-2xl font-light tracking-wide md:text-3xl text-matte-black">
-            Cinematic moments on the lake.
+    <section
+      id="gallery"
+      className="relative w-full bg-[#081218] py-24 sm:py-32 overflow-hidden text-white border-b border-white/[0.12]"
+    >
+      <div className="max-w-[1400px] mx-auto px-6 sm:px-12 mb-10 flex flex-col md:flex-row md:items-end justify-between gap-3">
+        <div>
+          <span className="font-sans text-[12px] font-semibold text-slate-400 uppercase tracking-[-0.01em] block mb-2">
+            Visual Portfolio
+          </span>
+          <h2 className="font-heading text-3xl sm:text-5xl font-extrabold text-white tracking-[-0.035em]">
+            Life Aboard Lake Escape
           </h2>
-          <p className="mt-4 font-sans text-sm font-light text-matte-black/60 leading-relaxed">
-            Stills from Tehri Lake capturing the architecture of our boat, the shifting mountain lights, and local adventures.
-          </p>
         </div>
 
-        {/* Masonry-like Staggered Grid */}
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:auto-rows-[280px]">
-          {galleryItems.map((item, idx) => (
-            <div
-              key={idx}
-              className={`reveal group relative overflow-hidden rounded-[8px] border border-matte-black/5 bg-matte-black ${item.spanClass}`}
-              data-cursor="Zoom View"
-            >
-              {/* Image Container with Ken Burns effect */}
-              <div className="relative h-full w-full overflow-hidden">
-                <Image
-                  src={item.src}
-                  alt={item.alt}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  className="image-cover opacity-85 transition-transform duration-[12000ms] ease-out group-hover:scale-108 animate-kenburns"
-                />
-              </div>
+        <span className="font-sans text-xs font-semibold text-slate-400 tracking-[-0.01em]">
+          Horizontal Perspectives
+        </span>
+      </div>
 
-              {/* Hover Overlay Detail */}
-              <div className="absolute inset-0 z-20 flex flex-col justify-end bg-gradient-to-t from-matte-black/80 via-matte-black/20 to-transparent p-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-                <p className="font-poppins text-[9px] font-bold uppercase tracking-widest text-gold">
-                  {item.category}
-                </p>
-                <h3 className="font-serif text-base font-light text-cream mt-1 leading-snug">
-                  {item.alt}
-                </h3>
+      {/* Horizontal Marquee Strip */}
+      <div className="w-full overflow-hidden">
+        <div className="animate-marquee flex gap-5 px-4 items-center">
+          {marqueeItems.map((photo, index) => (
+            <div
+              key={`${photo.src}-${index}`}
+              className="relative shrink-0 overflow-hidden rounded-xl border border-white/15 group bg-[#0d1b22]"
+              style={{
+                width: index % 3 === 0 ? "500px" : index % 3 === 1 ? "320px" : "420px",
+                height: "340px",
+              }}
+            >
+              <Image
+                src={photo.src}
+                alt={photo.title}
+                fill
+                className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                sizes="(max-width: 768px) 300px, 500px"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#081218]/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              
+              <div className="absolute bottom-4 left-4 right-4 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-between">
+                <span className="font-sans text-xs font-semibold text-white tracking-[-0.01em]">
+                  {photo.title}
+                </span>
+                <span className="font-sans text-[11px] text-slate-300 font-medium">Tehri Lake</span>
               </div>
             </div>
           ))}

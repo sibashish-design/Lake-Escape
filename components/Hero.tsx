@@ -1,134 +1,137 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { ArrowDown, Play } from "lucide-react";
+import { useEffect, useRef } from "react";
+import { ArrowDown, Compass } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { media } from "@/lib/data";
-import { ShowreelModal } from "./ShowreelModal";
-import { useLanguage } from "@/providers/LanguageProvider";
-import { FadeIn } from "@/components/ui/FadeIn";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 export function Hero() {
-  const { t } = useLanguage();
-  const [showreelOpen, setShowreelOpen] = useState(false);
+  const heroRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+    if (!heroRef.current || !titleRef.current) return;
 
-    // Scale and fade out the centered logo as we scroll down
-    gsap.to(".hero-logo-text", {
-      scrollTrigger: {
-        trigger: ".hero-container",
-        start: "top top",
-        end: "bottom 30%",
-        scrub: 1,
-        invalidateOnRefresh: true
-      },
-      scale: 0.85,
-      opacity: 0,
-      y: -40,
-      ease: "power1.inOut"
-    });
+    const ctx = gsap.context(() => {
+      gsap.to(titleRef.current, {
+        y: -40,
+        opacity: 0.25,
+        ease: "none",
+        scrollTrigger: {
+          trigger: heroRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+    }, heroRef);
+
+    return () => ctx.revert();
   }, []);
 
-  const handleScrollDown = () => {
-    const nextSection = document.getElementById("intro");
-    if (nextSection) {
-      nextSection.scrollIntoView({ behavior: "smooth" });
+  const handleScrollToContent = () => {
+    const target = document.getElementById("manifesto");
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   return (
-    <>
-      <section
-        className="hero-container relative flex min-h-screen items-center justify-center overflow-hidden bg-matte-black text-cream"
-        data-cursor="Explore"
-      >
-        {/* Full-bleed ambient video background with Ken Burns effect */}
-        <div className="absolute inset-0 w-full h-full overflow-hidden">
-          <video
-            className="h-full w-full object-cover opacity-60 animate-kenburns"
-            src={media.heroVideo}
-            autoPlay
-            muted
-            loop
-            playsInline
-            poster={media.boatOne}
-          />
-        </div>
+    <section
+      ref={heroRef}
+      className="relative flex min-h-screen w-full flex-col justify-between overflow-hidden bg-[#081218] text-white pt-28 pb-10"
+    >
+      {/* Full-bleed Ambient Video Loop */}
+      <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
+        <video
+          className="h-full w-full object-cover object-center opacity-50 animate-kenburns"
+          src={media.heroVideo}
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="/images/rooms/views/view-1.jpg"
+        />
+        {/* Clean Vignette & Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#081218] via-[#081218]/40 to-[#040a0e]/75" />
+      </div>
 
-        {/* Subtle dark gradient overlay for Dark Luxury feel */}
-        <div className="absolute inset-0 bg-gradient-to-b from-matte-black/70 via-matte-black/40 to-matte-black/90" />
+      {/* Top Spacer */}
+      <div />
 
-        {/* Hero Content */}
-        <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pt-32 pb-20 text-center">
-          <div className="mx-auto max-w-3xl flex flex-col items-center justify-center min-h-[50vh]">
-            
-            {/* Centered Logo text that zooms on scroll */}
-            <div className="hero-logo-text select-none cursor-default relative z-10">
-              <FadeIn delay={0.2} duration={1.5}>
-                <p className="font-serif text-5xl md:text-7xl lg:text-[7.5rem] tracking-[0.15em] uppercase font-light text-cream leading-none drop-shadow-lg">
-                  {t.hero.title}
-                </p>
-              </FadeIn>
-            </div>
-
-            {/* Huge overlapping cursive in Copper */}
-            <div className="relative z-20 -mt-6 md:-mt-12 lg:-mt-20 mb-12">
-              <FadeIn delay={0.8} direction="up" duration={1.2}>
-                <p className="font-cursive text-6xl md:text-[7rem] lg:text-[10rem] text-gold select-none lowercase leading-none drop-shadow-2xl opacity-95 transform -rotate-2">
-                  {t.hero.eyebrow}
-                </p>
-              </FadeIn>
-            </div>
-
-            {/* Localized Subcopy & Buttons */}
-            <div className="space-y-8 max-w-xl mx-auto mt-4">
-              <FadeIn delay={1.0} direction="up" duration={1.2}>
-                <p className="font-sans text-[10px] uppercase tracking-[0.3em] font-medium leading-relaxed text-cream/70 md:text-xs max-w-sm mx-auto">
-                  {t.hero.subtitle}
-                </p>
-              </FadeIn>
-
-              {/* Action Buttons */}
-              <FadeIn delay={1.2} direction="up" duration={1.2}>
-                <div className="mt-10 flex flex-wrap items-center justify-center gap-6 pt-4">
-                  <button
-                    onClick={() => setShowreelOpen(true)}
-                    className="btn border-fine bg-transparent text-cream backdrop-blur-sm transition-all hover:bg-cream/5"
-                    data-cursor="Play"
-                  >
-                    <Play size={12} className="fill-current" /> Play Showreel
-                  </button>
-                  <a
-                    href="/booking"
-                    className="btn btn-primary"
-                  >
-                    {t.nav.book}
-                  </a>
-                </div>
-              </FadeIn>
-            </div>
-
+      {/* Hero Typography — Raleway Bold, Negative Kerning, No Gold */}
+      <div className="relative z-10 mx-auto w-full max-w-[1300px] px-6 text-center">
+        <div className="mx-auto max-w-4xl space-y-6">
+          
+          <div className="inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/10 px-4 py-1.5 backdrop-blur-md">
+            <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="font-sans text-[12px] font-semibold text-slate-200 uppercase tracking-[-0.01em]">
+              Floating Luxury Resort • Tehri Lake
+            </span>
           </div>
+
+          <h1
+            ref={titleRef}
+            className="font-heading text-4xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-extrabold text-white leading-[1.08] tracking-[-0.04em] drop-shadow-xl"
+          >
+            A New Era of Floating <br />
+            <span className="font-black text-slate-100">
+              Luxury on Water
+            </span>
+          </h1>
+
+          <p className="mx-auto max-w-xl font-sans text-sm sm:text-base font-normal text-slate-300 tracking-[-0.01em] leading-relaxed">
+            Four bespoke staterooms crafted for those who demand stillness, comfort, and uncompromising luxury on the water.
+          </p>
+
+          <div className="pt-4 flex flex-wrap items-center justify-center gap-4">
+            <a
+              href="/booking"
+              className="btn btn-primary shadow-lg"
+            >
+              Reserve Your Stay
+            </a>
+            <a
+              href="#vessel"
+              className="btn btn-secondary shadow-md"
+            >
+              Explore the Vessel
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+      {/* Bottom Information Strip — Clean light grey lines & text */}
+      <div className="relative z-10 mx-auto w-full max-w-[1400px] px-6 sm:px-10 pt-12 flex flex-col sm:flex-row items-center justify-between gap-6 border-t border-white/[0.12]">
+        
+        {/* Geographic Coordinates */}
+        <div className="flex items-center gap-2 text-slate-400 font-sans text-[12px] font-medium tracking-[-0.01em]">
+          <Compass size={14} className="text-slate-300" />
+          <span>30.4002° N, 78.4357° E • 840m Altitude</span>
         </div>
 
-        {/* Scroll Cue Indicator */}
-        <FadeIn delay={1.8} direction="up" className="absolute bottom-12 lg:bottom-16 left-1/2 z-10 -translate-x-1/2">
-          <button
-            onClick={handleScrollDown}
-            className="flex flex-col items-center gap-3 text-gold/60 transition-colors hover:text-gold"
-            aria-label="Scroll down to introduction"
-          >
-            <span className="font-sans text-[9px] font-semibold uppercase tracking-[0.3em]">Discover</span>
-            <ArrowDown size={14} className="animate-bounce" />
-          </button>
-        </FadeIn>
-      </section>
+        {/* Scroll Cue */}
+        <button
+          onClick={handleScrollToContent}
+          className="group flex flex-col items-center gap-1.5 text-slate-400 transition-colors duration-200 hover:text-white"
+          aria-label="Scroll down"
+        >
+          <span className="font-sans text-[11px] font-semibold tracking-[-0.01em]">Scroll</span>
+          <ArrowDown size={14} className="transition-transform duration-200 group-hover:translate-y-1 animate-bounce text-slate-300" />
+        </button>
 
-      {/* Cinematic Showreel Modal */}
-      <ShowreelModal isOpen={showreelOpen} onClose={() => setShowreelOpen(false)} />
-    </>
+        {/* Staterooms count */}
+        <div className="hidden sm:block text-slate-400 font-sans text-[12px] font-medium tracking-[-0.01em] text-right">
+          <span>4 Private Staterooms • 360° Decks</span>
+        </div>
+
+      </div>
+    </section>
   );
 }

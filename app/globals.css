@@ -1,30 +1,56 @@
-@import url('https://fonts.googleapis.com/css2?family=Allura&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap');
 @import "tailwindcss";
 @source "../app/**/*.{ts,tsx}";
 @source "../components/**/*.{ts,tsx}";
 @source "../lib/**/*.{ts,tsx}";
 
+/* ═══════════════════════════════════════════════════════════
+   LAKE ESCAPE — Apple HIG & Clean Luxury Design System
+   Typography: Montserrat & Raleway (Bold Headings, Semibold Subheadings, Negative/Clean Kerning)
+   Palette: Deep Nautical Obsidian, Light Grey Accents, White Text
+   ═══════════════════════════════════════════════════════════ */
+
 @theme {
-  --color-olive: #4C2B36; /* Burgundy */
-  --color-olive-dark: #321A22; /* Dark Burgundy */
-  --color-beige: #221A1E; /* Warm dark gray based on the obsidian tone */
-  --color-beige-dark: #1A1317;
-  --color-cream: #FAF9F6;
-  --color-matte-black: #141115; /* Obsidian */
-  --color-gold: #8D6346; /* Copper */
-  --font-serif: Futura, "Helvetica Neue", Arial, sans-serif;
-  --font-sans: "Poppins", Helvetica, Arial, sans-serif;
-  --font-cursive: "Allura", cursive;
+  /* ── Core Dark Luxury Palette ── */
+  --color-ocean:       #081218;
+  --color-ocean-light: #0d1b22;
+  --color-navy:        #11222c;
+  --color-dark:        #040a0e;
+  
+  /* ── Clean Neutral Tones (No Artificial Gold) ── */
+  --color-light-grey:  #94a3b8;
+  --color-border-grey: rgba(255, 255, 255, 0.12);
+  --color-silver:      #cbd5e1;
+  --color-cream:       #f8fafc;
+  --color-white:       #ffffff;
+
+  /* Legacy aliases mapped to clean neutral palette */
+  --color-olive:       #081218;
+  --color-olive-dark:  #040a0e;
+  --color-beige:       #0d1b22;
+  --color-beige-dark:  #081218;
+  --color-matte-black: #081218;
+  --color-gold:        #cbd5e1;
+  --color-champagne:   #e2e8f0;
+  --color-charcoal:    #1e293b;
+
+  /* ── Apple HIG Typography Tokens ── */
+  --font-sans:    'Montserrat', -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
+  --font-serif:   'Raleway', -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+  --font-heading: 'Raleway', 'Montserrat', sans-serif;
+  --font-mono:    'Montserrat', -apple-system, monospace;
 }
 
 :root {
-  --olive: #4C2B36;
-  --olive-dark: #321A22;
-  --beige: #221A1E;
-  --beige-dark: #1A1317;
-  --cream: #FAF9F6;
-  --matte-black: #141115;
-  --gold: #8D6346;
+  --ocean:       #081218;
+  --ocean-light: #0d1b22;
+  --navy:        #11222c;
+  --dark:        #040a0e;
+  --light-grey:  #94a3b8;
+  --silver:      #cbd5e1;
+  --cream:       #f8fafc;
+  --gold:        #cbd5e1;
+  --matte-black: #081218;
 }
 
 * {
@@ -32,27 +58,52 @@
 }
 
 html {
-  scroll-behavior: auto; /* Required for Lenis smooth scroll */
-  background: var(--matte-black);
-  color: var(--cream);
+  scroll-behavior: auto;
+  background: var(--ocean);
+  color: #f8fafc;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
 }
 
 body {
   margin: 0;
-  background: var(--matte-black);
-  color: var(--cream);
-  font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
+  background: var(--ocean);
+  color: #f8fafc;
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16px;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+  letter-spacing: -0.011em; /* Negative human kerning */
 }
 
-/* Hide default cursor on desktop when custom cursor is active */
-@media (min-width: 1024px) {
-  .custom-cursor-active, 
-  .custom-cursor-active * {
-    cursor: none !important;
-  }
+/* ── Apple HIG Headings: Bold with Negative Kerning, No Wide Spacing ── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Raleway', 'Montserrat', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.025em; /* Tight negative kerning */
+  line-height: 1.15;
+}
+
+h1 {
+  font-weight: 800;
+  letter-spacing: -0.035em;
+}
+
+h2 {
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+h3 {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* ── Selection ── */
+::selection {
+  background: #334155;
+  color: #ffffff;
 }
 
 a {
@@ -60,39 +111,60 @@ a {
   text-decoration: none;
 }
 
-/* Selection colors */
-::selection {
-  background: var(--gold);
-  color: var(--matte-black);
-}
+/* ═══════════════════════════════════════
+   LAYOUT & CONTAINERS
+   ═══════════════════════════════════════ */
 
-/* Standard Section Layout */
 .section {
   padding: clamp(48px, 6vw, 96px) 20px;
   position: relative;
 }
 
 .container {
-  width: min(1440px, 100%);
+  width: min(1280px, 100%);
   margin: 0 auto;
+  padding-left: 24px;
+  padding-right: 24px;
 }
 
-/* Eyebrows and Titles */
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+/* ═══════════════════════════════════════
+   APPLE HIG TYPOGRAPHY UTILITIES
+   ═══════════════════════════════════════ */
+
 .eyebrow {
-  color: var(--gold);
-  font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
-  font-size: 11px;
+  color: #94a3b8;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
   font-weight: 600;
-  letter-spacing: 0.25em;
+  letter-spacing: -0.01em;
   text-transform: uppercase;
 }
 
-/* Glassmorphism utility for Dark Mode */
+.main-title {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+}
+
+/* ═══════════════════════════════════════
+   GLASS & SURFACE (Apple Liquid Glass)
+   ═══════════════════════════════════════ */
+
 .glass {
-  background: rgba(10, 10, 10, 0.65);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(13, 27, 34, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(24px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 
 .image-cover {
@@ -101,189 +173,112 @@ a {
   object-fit: cover;
 }
 
-/* Premium Button Styling - Dark Luxury */
+/* ═══════════════════════════════════════
+   CLEAN BUTTONS (Light Grey Lines, Solid White/Dark)
+   ═══════════════════════════════════════ */
+
 .btn {
   display: inline-flex;
-  min-height: 48px;
+  min-height: 44px; /* Apple HIG standard minimum touch size */
   align-items: center;
   justify-content: center;
   gap: 8px;
-  border: 1px solid transparent;
-  border-radius: 4px;
-  padding: 0 26px;
-  font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
-  font-size: 11px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 0 24px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  transition: all 0.25s ease;
   position: relative;
-  overflow: hidden;
-  z-index: 1;
+  cursor: pointer;
 }
 
 .btn-primary {
-  background: var(--gold);
-  color: var(--matte-black);
+  background: #ffffff;
+  color: #081218;
+  border-color: #ffffff;
 }
 
-.btn-primary::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--cream);
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  z-index: -1;
-}
-
-.btn-primary:hover::before {
-  transform: scaleX(1);
-  transform-origin: left;
+.btn-primary:hover {
+  background: #e2e8f0;
+  border-color: #e2e8f0;
+  transform: translateY(-1px);
 }
 
 .btn-secondary {
   border-color: rgba(255, 255, 255, 0.2);
-  background: transparent;
-  color: var(--cream);
-}
-
-.btn-secondary::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--cream);
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  z-index: -1;
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  backdrop-filter: blur(12px);
 }
 
 .btn-secondary:hover {
-  color: var(--matte-black);
-  border-color: var(--cream);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: translateY(-1px);
 }
 
-.btn-secondary:hover::before {
-  transform: scaleX(1);
-  transform-origin: left;
+/* Clean Action Text Link */
+.coral-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #e2e8f0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  padding-bottom: 3px;
+  transition: all 0.2s ease;
 }
 
-.btn-olive {
-  background: var(--olive);
-  color: var(--cream);
+.coral-btn:hover {
+  color: #ffffff;
+  border-color: #ffffff;
 }
 
-.btn-olive::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--olive-dark);
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  z-index: -1;
-}
+/* ═══════════════════════════════════════
+   BORDERS (Clean Light Grey Lines)
+   ═══════════════════════════════════════ */
 
-.btn-olive:hover::before {
-  transform: scaleX(1);
-  transform-origin: left;
-}
+.border-fine   { border: 1px solid rgba(255, 255, 255, 0.12); }
+.border-b-fine { border-bottom: 1px solid rgba(255, 255, 255, 0.12); }
+.border-t-fine { border-top: 1px solid rgba(255, 255, 255, 0.12); }
+.border-l-fine { border-left: 1px solid rgba(255, 255, 255, 0.12); }
+.border-r-fine { border-right: 1px solid rgba(255, 255, 255, 0.12); }
 
-/* Link Draw Underline */
-.link-underline {
-  position: relative;
-  display: inline-block;
-}
+/* ═══════════════════════════════════════
+   ANIMATIONS & SCROLLBAR
+   ═════════════════════════════ */
 
-.link-underline::after {
-  content: "";
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background-color: currentColor;
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.link-underline:hover::after {
-  transform: scaleX(1);
-  transform-origin: left;
-}
-
-/* Soft Reveal animation state */
-.reveal {
-  opacity: 0;
-}
-
-/* Slow Ken Burns image effect */
-@keyframes kenburns {
-  0% { transform: scale(1.0); }
-  50% { transform: scale(1.08); }
-  100% { transform: scale(1.0); }
-}
-
-.animate-kenburns {
-  animation: kenburns 20s ease-in-out infinite;
-}
-
-/* Infinite Marquee */
 @keyframes marquee {
-  0% { transform: translateX(0%); }
+  0%   { transform: translateX(0%); }
   100% { transform: translateX(-50%); }
 }
 
 .animate-marquee {
   display: flex;
   width: max-content;
-  animation: marquee 24s linear infinite;
+  animation: marquee 45s linear infinite;
 }
 
 .animate-marquee:hover {
   animation-play-state: paused;
 }
 
-/* Thin Elegant Borders for Dark Theme */
-.border-fine {
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-.border-b-fine {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-.border-t-fine {
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-}
-.border-l-fine {
-  border-left: 1px solid rgba(255, 255, 255, 0.08);
-}
-.border-r-fine {
-  border-right: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--matte-black);
+  background: #081218;
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--olive);
-  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--gold);
+  background: rgba(255, 255, 255, 0.35);
 }
