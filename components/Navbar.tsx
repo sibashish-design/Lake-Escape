@@ -65,18 +65,18 @@ export function Navbar() {
             {/* Guest Portal / Profile Access */}
             <Link
               href="/profile"
-              className="flex items-center gap-1.5 font-sans text-xs sm:text-[13px] font-bold tracking-[-0.01em] text-white hover:bg-white/20 transition-all duration-200 px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-lg bg-white/15 border border-white/20 backdrop-blur-md shadow-sm"
+              className="flex items-center gap-1.5 font-sans text-xs sm:text-[13px] font-semibold text-white hover:bg-white/20 transition-all duration-200 px-3.5 sm:px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-md shadow-sm"
               title="My Reservations & Profile"
             >
               <User size={14} className="text-white shrink-0" />
-              <span className="inline">Guest Portal</span>
+              <span>Guest Portal</span>
             </Link>
 
-            {/* Book Stateroom CTA - Solid White Button with sharp dark text */}
+            {/* Book Stateroom CTA - Sleek White Pill Button */}
             <Link
               href="/booking"
               style={{ color: "#081218", backgroundColor: "#ffffff" }}
-              className="inline-flex items-center justify-center font-sans text-xs sm:text-[13px] font-extrabold tracking-[-0.01em] px-4 sm:px-5 py-2 rounded-lg border border-white transition-all duration-200 hover:bg-slate-200 shadow-md"
+              className="inline-flex items-center justify-center font-sans text-xs sm:text-[13px] font-bold tracking-[-0.01em] px-5 sm:px-6 py-2 rounded-full border border-white transition-all duration-200 hover:bg-slate-200 hover:scale-105 shadow-md"
             >
               Reserve Suite
             </Link>
