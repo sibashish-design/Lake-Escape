@@ -8,7 +8,7 @@ export function DiningSection() {
   return (
     <section
       id="dining"
-      className="relative w-full min-h-[75vh] flex items-center bg-[#081218] text-white overflow-hidden py-24 sm:py-32 px-6 sm:px-12 border-b border-white/[0.12]"
+      className="relative w-full min-h-[60vh] sm:min-h-[75vh] flex items-center bg-[#081218] text-white overflow-hidden py-16 sm:py-24 md:py-32 px-6 sm:px-12 border-b border-white/[0.12]"
     >
       {/* Background Ambience Image */}
       <div className="absolute inset-0 w-full h-full">
@@ -23,7 +23,7 @@ export function DiningSection() {
       </div>
 
       <div className="relative z-10 max-w-[1400px] mx-auto w-full">
-        <div className="max-w-xl bg-[#081218]/90 p-8 sm:p-12 rounded-xl border border-white/15 backdrop-blur-xl shadow-2xl space-y-6">
+        <div className="w-full sm:max-w-xl bg-[#081218]/90 p-6 sm:p-8 md:p-12 rounded-xl border border-white/15 backdrop-blur-xl shadow-2xl space-y-5 sm:space-y-6">
           
           <div className="flex items-center gap-2 text-slate-300">
             <Utensils size={15} />

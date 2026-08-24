@@ -20,7 +20,7 @@ export function RoomShowcase() {
   return (
     <section
       id="rooms"
-      className="relative w-full bg-[#081218] py-24 sm:py-32 px-6 sm:px-12 text-white border-b border-white/[0.12] overflow-hidden"
+      className="relative w-full bg-[#081218] py-14 sm:py-24 md:py-32 px-6 sm:px-12 text-white border-b border-white/[0.12] overflow-hidden"
     >
       <div className="relative z-10 max-w-[1400px] mx-auto">
 
@@ -35,7 +35,7 @@ export function RoomShowcase() {
             </h2>
           </div>
 
-          <div className="flex items-center gap-2 sm:gap-3 overflow-x-auto pb-2 scrollbar-none">
+          <div className="flex items-center gap-2 sm:gap-3 overflow-x-auto pb-2 scrollbar-none w-full md:w-auto">
             {rooms.map((room) => (
               <button
                 key={room.id}
@@ -52,7 +52,7 @@ export function RoomShowcase() {
         </div>
 
         {/* Selected Room View */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 items-center">
+        <div className="flex flex-col lg:grid lg:grid-cols-12 gap-8 sm:gap-10">
 
           {/* Main Large Visual Display */}
           <div className="lg:col-span-8 space-y-3">
@@ -111,12 +111,12 @@ export function RoomShowcase() {
             </div>
 
             {/* Gallery Thumbnails Strip */}
-            <div className="grid grid-cols-4 gap-2.5">
+            <div className="flex gap-2.5 overflow-x-auto pb-2 scrollbar-none">
               {selectedRoom.gallery.map((img, idx) => (
                 <button
                   key={img}
                   onClick={() => setActiveImageIndex(idx)}
-                  className={`relative aspect-[16/10] overflow-hidden rounded-lg border transition-all duration-200 ${activeImageIndex === idx
+                  className={`relative min-w-[25%] aspect-[16/10] overflow-hidden rounded-lg border transition-all duration-200 ${activeImageIndex === idx
                       ? "border-white opacity-100 ring-2 ring-white/50"
                       : "border-white/15 opacity-60 hover:opacity-100"
                     }`}

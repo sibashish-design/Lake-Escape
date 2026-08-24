@@ -108,7 +108,7 @@ export function Hero() {
       </div>
 
       {/* Bottom Information Strip — Clean light grey lines & text */}
-      <div className="relative z-10 mx-auto w-full max-w-[1400px] px-6 sm:px-10 pt-12 flex flex-col sm:flex-row items-center justify-between gap-6 border-t border-white/[0.12]">
+      <div className="relative z-10 mx-auto w-full max-w-[1400px] px-6 sm:px-10 pt-8 sm:pt-12 flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6 border-t border-white/[0.12]">
         
         {/* Geographic Coordinates */}
         <div className="flex items-center gap-2 text-slate-400 font-sans text-[12px] font-medium tracking-[-0.01em]">

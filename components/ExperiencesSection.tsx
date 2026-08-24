@@ -9,7 +9,7 @@ export function ExperiencesSection() {
   return (
     <section
       id="experiences"
-      className="relative w-full bg-[#0d1b22] py-24 sm:py-32 px-6 sm:px-12 text-white border-b border-white/[0.12] overflow-hidden"
+      className="relative w-full bg-[#0d1b22] py-14 sm:py-24 md:py-32 px-6 sm:px-12 text-white border-b border-white/[0.12] overflow-hidden"
     >
       <div className="relative z-10 max-w-[1400px] mx-auto">
         
@@ -34,7 +34,7 @@ export function ExperiencesSection() {
         </div>
 
         {/* 4-Item Grid of Luxury Experiences */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
           {experiences.map((exp, idx) => (
             <div
               key={exp.id}
@@ -60,29 +60,32 @@ export function ExperiencesSection() {
                 </div>
 
                 {/* Details */}
-                <div className="p-5 space-y-2.5">
+                <div className="p-3 sm:p-5 space-y-2">
                   <div className="flex items-center gap-1.5 font-sans text-xs font-semibold text-slate-400">
-                    <Clock size={13} className="text-slate-400" />
-                    <span>{exp.duration}</span>
+                    <Clock size={13} className="text-slate-400 shrink-0" />
+                    <span className="truncate">{exp.duration}</span>
                   </div>
 
-                  <h3 className="font-heading text-lg font-bold text-white tracking-[-0.02em] group-hover:text-slate-200 transition-colors">
+                  <h3 className="font-heading text-sm sm:text-lg font-bold text-white tracking-[-0.02em] group-hover:text-slate-200 transition-colors line-clamp-2">
                     {exp.title}
                   </h3>
 
-                  <p className="font-sans text-xs sm:text-sm font-normal text-slate-300 leading-relaxed tracking-[-0.01em]">
+                  <p className="font-sans text-[11px] sm:text-sm font-normal text-slate-300 leading-relaxed tracking-[-0.01em] line-clamp-3 hidden sm:block">
                     {exp.description}
+                  </p>
+                  <p className="font-sans text-[11px] font-normal text-slate-300 leading-relaxed tracking-[-0.01em] line-clamp-2 sm:hidden">
+                    {exp.text}
                   </p>
                 </div>
               </div>
 
-              <div className="p-5 pt-0">
+              <div className="p-3 sm:p-5 pt-0">
                 <Link
                   href="/booking"
-                  className="w-full inline-flex items-center justify-between border-t border-white/[0.12] pt-3.5 font-sans text-xs font-semibold text-slate-300 uppercase hover:text-white transition tracking-[-0.01em]"
+                  className="w-full inline-flex items-center justify-between border-t border-white/[0.12] pt-3 font-sans text-[10px] sm:text-xs font-semibold text-slate-300 uppercase hover:text-white transition tracking-[-0.01em]"
                 >
-                  <span>Inquire / Reserve</span>
-                  <ArrowRight size={14} />
+                  <span>Inquire</span>
+                  <ArrowRight size={12} />
                 </Link>
               </div>
             </div>

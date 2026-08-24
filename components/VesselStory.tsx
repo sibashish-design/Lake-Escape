@@ -8,7 +8,7 @@ export function VesselStory() {
   return (
     <section
       id="vessel"
-      className="relative w-full bg-[#0d1b22] py-24 sm:py-32 px-6 sm:px-12 overflow-hidden text-white border-b border-white/[0.12]"
+      className="relative w-full bg-[#0d1b22] py-14 sm:py-24 md:py-32 px-6 sm:px-12 overflow-hidden text-white border-b border-white/[0.12]"
     >
       {/* Background Subtle Gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#081218] via-[#0d1b22] to-[#081218] opacity-90" />
@@ -116,13 +116,13 @@ export function VesselStory() {
         </div>
 
         {/* Vessel Specs Grid Strip */}
-        <div className="mt-16 sm:mt-20 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 border-t border-white/[0.12] pt-8">
+        <div className="mt-12 sm:mt-16 md:mt-20 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3 border-t border-white/[0.12] pt-6 sm:pt-8">
           {vesselSpecs.map((spec) => (
-            <div key={spec.label} className="p-4 rounded-lg bg-white/[0.04] border border-white/[0.08]">
-              <span className="font-sans text-[11px] font-semibold text-slate-400 uppercase block mb-1 tracking-[-0.01em]">
+            <div key={spec.label} className="p-3 sm:p-4 rounded-lg bg-white/[0.04] border border-white/[0.08]">
+              <span className="font-sans text-[10px] sm:text-[11px] font-semibold text-slate-400 uppercase block mb-1 tracking-[-0.01em]">
                 {spec.label}
               </span>
-              <p className="font-sans text-xs font-bold text-white tracking-[-0.01em]">
+              <p className="font-sans text-[11px] sm:text-xs font-bold text-white tracking-[-0.01em] leading-tight">
                 {spec.value}
               </p>
             </div>

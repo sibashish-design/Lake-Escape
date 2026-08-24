@@ -9,7 +9,7 @@ export function GallerySection() {
   return (
     <section
       id="gallery"
-      className="relative w-full bg-[#081218] py-24 sm:py-32 overflow-hidden text-white border-b border-white/[0.12]"
+      className="relative w-full bg-[#081218] py-14 sm:py-24 md:py-32 overflow-hidden text-white border-b border-white/[0.12]"
     >
       <div className="max-w-[1400px] mx-auto px-6 sm:px-12 mb-10 flex flex-col md:flex-row md:items-end justify-between gap-3">
         <div>
@@ -28,14 +28,14 @@ export function GallerySection() {
 
       {/* Horizontal Marquee Strip */}
       <div className="w-full overflow-hidden">
-        <div className="animate-marquee flex gap-5 px-4 items-center">
+        <div className="animate-marquee flex gap-3 sm:gap-5 px-4 items-center">
           {marqueeItems.map((photo, index) => (
             <div
               key={`${photo.src}-${index}`}
               className="relative shrink-0 overflow-hidden rounded-xl border border-white/15 group bg-[#0d1b22]"
               style={{
-                width: index % 3 === 0 ? "500px" : index % 3 === 1 ? "320px" : "420px",
-                height: "340px",
+                width: index % 3 === 0 ? "clamp(200px, 35vw, 500px)" : index % 3 === 1 ? "clamp(140px, 22vw, 320px)" : "clamp(170px, 28vw, 420px)",
+                height: "clamp(180px, 25vw, 340px)",
               }}
             >
               <Image

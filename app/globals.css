@@ -282,3 +282,45 @@ a {
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.35);
 }
+
+/* ═══════════════════════════════════════
+   MOBILE UTILITIES
+   ═══════════════════════════════════════ */
+
+/* Hide scrollbar on horizontal scroll strips */
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+/* Touch-friendly swipe areas */
+.touch-scroll-x {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+}
+
+.touch-scroll-x > * {
+  scroll-snap-align: start;
+}
+
+/* Prevent text overflow on small screens */
+@media (max-width: 640px) {
+  .section {
+    padding: clamp(40px, 5vw, 80px) 16px;
+  }
+}
+
+/* Animate kenburns */
+@keyframes kenburns {
+  0%   { transform: scale(1)    translateX(0)   translateY(0); }
+  50%  { transform: scale(1.04) translateX(-1%) translateY(-1%); }
+  100% { transform: scale(1)    translateX(0)   translateY(0); }
+}
+.animate-kenburns {
+  animation: kenburns 20s ease-in-out infinite;
+}

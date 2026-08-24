@@ -43,7 +43,7 @@ export function BrandStatement() {
     <section
       id="manifesto"
       ref={containerRef}
-      className="relative w-full min-h-[75vh] flex items-center justify-center bg-[#081218] overflow-hidden py-24 sm:py-32 px-6 sm:px-12 border-t border-b border-white/[0.12]"
+      className="relative w-full min-h-[60vh] sm:min-h-[75vh] flex items-center justify-center bg-[#081218] overflow-hidden py-16 sm:py-24 md:py-32 px-6 sm:px-12 border-t border-b border-white/[0.12]"
     >
       {/* Ambient Glow */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#0d1b22] via-[#081218] to-[#040a0e] opacity-80" />
