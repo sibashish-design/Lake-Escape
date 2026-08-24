@@ -29,13 +29,14 @@ export function Navbar() {
   return (
     <>
       <header
-        className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ease-out ${isScrolled || !isHome
-            ? "bg-[#081218]/90 py-3 shadow-[0_8px_30px_rgba(0,0,0,0.4)] border-b border-white/[0.12] backdrop-blur-xl"
-            : "bg-gradient-to-b from-[#040a0e]/80 via-[#040a0e]/30 to-transparent py-5"
-          }`}
+        className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ease-out ${
+          isScrolled || !isHome
+            ? "bg-[#081218]/95 py-3 shadow-[0_8px_30px_rgba(0,0,0,0.5)] border-b border-white/[0.15] backdrop-blur-xl"
+            : "bg-[#081218]/80 py-4 border-b border-white/10 backdrop-blur-md shadow-lg"
+        }`}
       >
-        <div className="mx-auto flex w-full max-w-[1400px] items-center justify-between px-6 sm:px-10">
-
+        <div className="mx-auto flex w-full max-w-[1400px] items-center justify-between px-4 sm:px-10">
+          
           {/* Brand Logo */}
           <Link href="/" className="group flex items-center gap-3 transition-opacity duration-200 hover:opacity-90">
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -46,13 +47,13 @@ export function Navbar() {
             />
           </Link>
 
-          {/* Desktop Navigation Links — Montserrat Clean SemiBold, Negative Kerning */}
+          {/* Desktop Navigation Links — High contrast bold text */}
           <nav className="hidden items-center gap-7 lg:flex">
             {navItems.map((item) => (
               <Link
                 key={item.label}
                 href={item.href}
-                className="font-sans text-[13px] font-semibold tracking-[-0.01em] text-slate-200 transition-colors duration-200 hover:text-white"
+                className="font-sans text-[13px] font-bold tracking-[-0.01em] text-white hover:text-slate-300 transition-colors duration-200 drop-shadow-sm"
               >
                 {item.label}
               </Link>
@@ -60,29 +61,29 @@ export function Navbar() {
           </nav>
 
           {/* Right Header Actions */}
-          <div className="flex items-center gap-4 sm:gap-6">
-
+          <div className="flex items-center gap-2.5 sm:gap-4">
+            
             {/* Guest Portal / Profile Access */}
             <Link
               href="/profile"
-              className="hidden sm:flex items-center gap-2 font-sans text-[13px] font-semibold tracking-[-0.01em] text-slate-300 hover:text-white transition-colors duration-200"
+              className="flex items-center gap-1.5 font-sans text-xs sm:text-[13px] font-bold tracking-[-0.01em] text-white hover:bg-white/20 transition-all duration-200 px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-lg bg-white/15 border border-white/20 backdrop-blur-md shadow-sm"
               title="My Reservations & Profile"
             >
-              <User size={15} className="text-slate-400" />
-              <span>Guest Portal</span>
+              <User size={14} className="text-white shrink-0" />
+              <span className="inline">Guest Portal</span>
             </Link>
 
-            {/* Book Stateroom CTA - Solid White Button with rounded-lg per Apple HIG */}
+            {/* Book Stateroom CTA - Solid White Button with sharp dark text */}
             <Link
               href="/booking"
-              className="hidden md:inline-flex items-center justify-center bg-white text-[#081218] font-sans text-[13px] font-bold tracking-[-0.01em] px-5 py-2.5 rounded-lg border border-white transition-all duration-200 hover:bg-slate-200 hover:border-slate-200 shadow-sm"
+              className="inline-flex items-center justify-center bg-white text-[#081218] font-sans text-xs sm:text-[13px] font-extrabold tracking-[-0.01em] px-3.5 sm:px-5 py-1.5 sm:py-2 rounded-lg border border-white transition-all duration-200 hover:bg-slate-200 hover:border-slate-200 shadow-md"
             >
               Reserve Suite
             </Link>
 
             {/* Mobile Hamburger Toggle */}
             <button
-              className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/15 bg-white/5 text-white transition-colors duration-200 hover:bg-white/10 lg:hidden"
+              className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/20 bg-white/10 text-white transition-colors duration-200 hover:bg-white/20 lg:hidden"
               onClick={() => setOpen((prev) => !prev)}
               aria-label="Toggle Navigation Menu"
             >

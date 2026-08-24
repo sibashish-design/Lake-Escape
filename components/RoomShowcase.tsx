@@ -57,18 +57,30 @@ export function RoomShowcase() {
           {/* Main Large Visual Display */}
           <div className="lg:col-span-8 space-y-3">
             <div className="relative aspect-[16/10] sm:aspect-[16/9] w-full overflow-hidden rounded-xl border border-white/15 bg-[#0d1b22] shadow-2xl group">
-              <Image
-                src={selectedRoom.gallery[activeImageIndex] || selectedRoom.image}
-                alt={selectedRoom.name}
-                fill
-                priority
-                className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                sizes="(max-width: 1024px) 100vw, 65vw"
-              />
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeImageIndex}
+                  initial={{ opacity: 0, scale: 1.02 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.35, ease: "easeOut" }}
+                  className="absolute inset-0 h-full w-full"
+                >
+                  <Image
+                    src={selectedRoom.gallery[activeImageIndex] || selectedRoom.image}
+                    alt={selectedRoom.name}
+                    fill
+                    priority
+                    className="object-cover object-center"
+                    sizes="(max-width: 1024px) 100vw, 65vw"
+                  />
+                </motion.div>
+              </AnimatePresence>
+
               <div className="absolute inset-0 bg-gradient-to-t from-[#081218]/90 via-transparent to-transparent pointer-events-none" />
 
               {/* Floating Badge */}
-              <div className="absolute top-4 left-4 z-10 bg-[#081218]/80 backdrop-blur-md px-3.5 py-1.5 rounded-md border border-white/15">
+              <div className="absolute top-4 left-4 z-10 bg-[#081218]/85 backdrop-blur-md px-3.5 py-1.5 rounded-md border border-white/15">
                 <span className="font-sans text-[11px] font-semibold text-slate-200 tracking-[-0.01em]">
                   Stateroom {selectedRoom.roomNumber} • {selectedRoom.category}
                 </span>
@@ -77,11 +89,18 @@ export function RoomShowcase() {
               {/* Expand View Trigger */}
               <button
                 onClick={() => setModalOpen(true)}
-                className="absolute top-4 right-4 z-10 flex h-9 w-9 items-center justify-center bg-[#081218]/80 text-white backdrop-blur-md rounded-md border border-white/15 transition hover:bg-white hover:text-[#081218]"
-                title="Expand Gallery"
+                className="absolute top-4 right-4 z-10 flex h-9 w-9 items-center justify-center bg-[#081218]/85 text-white backdrop-blur-md rounded-md border border-white/15 transition hover:bg-white hover:text-[#081218]"
+                title="Expand Fullscreen Gallery"
               >
                 <Maximize2 size={14} />
               </button>
+
+              {/* Image Counter Badge */}
+              <div className="absolute bottom-4 left-4 z-10 bg-[#081218]/85 backdrop-blur-md px-3 py-1 rounded-md border border-white/15">
+                <span className="font-sans text-[11px] font-bold text-slate-200 tracking-[-0.01em]">
+                  Photo {activeImageIndex + 1} of {selectedRoom.gallery.length}
+                </span>
+              </div>
 
               {/* Gallery Arrow Controls */}
               {selectedRoom.gallery.length > 1 && (
@@ -92,7 +111,8 @@ export function RoomShowcase() {
                         prev === 0 ? selectedRoom.gallery.length - 1 : prev - 1
                       )
                     }
-                    className="flex h-9 w-9 items-center justify-center bg-[#081218]/80 backdrop-blur-md rounded-md border border-white/15 text-white hover:bg-white hover:text-[#081218] transition"
+                    className="flex h-9 w-9 items-center justify-center bg-[#081218]/85 backdrop-blur-md rounded-md border border-white/15 text-white hover:bg-white hover:text-[#081218] transition"
+                    title="Previous Photo"
                   >
                     <ChevronLeft size={16} />
                   </button>
@@ -102,7 +122,8 @@ export function RoomShowcase() {
                         prev === selectedRoom.gallery.length - 1 ? 0 : prev + 1
                       )
                     }
-                    className="flex h-9 w-9 items-center justify-center bg-[#081218]/80 backdrop-blur-md rounded-md border border-white/15 text-white hover:bg-white hover:text-[#081218] transition"
+                    className="flex h-9 w-9 items-center justify-center bg-[#081218]/85 backdrop-blur-md rounded-md border border-white/15 text-white hover:bg-white hover:text-[#081218] transition"
+                    title="Next Photo"
                   >
                     <ChevronRight size={16} />
                   </button>

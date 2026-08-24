@@ -1,7 +1,7 @@
 import { Bike, Sparkles, Sun, Utensils } from "lucide-react";
 
 export const media = {
-  heroVideo: "/media/header-video-1.mp4",
+  heroVideo: "/media/showreel.mp4",
   boatOne: "/images/rooms/suite-room/primary.jpg",
   boatTwo: "/images/rooms/views/view-1.jpg",
   sunset: "/images/rooms/views/view-2.jpg",
@@ -51,9 +51,16 @@ export const rooms: RoomData[] = [
     image: "/images/rooms/room-1/primary.jpg",
     gallery: [
       "/images/rooms/room-1/primary.jpg",
-      "/images/rooms/room-1/interior-2.jpg",
-      "/images/rooms/room-1/balcony-1.jpg",
-      "/images/rooms/room-1/washroom-1.jpg"
+      "/images/rooms/room-1/Room - interior - 1.JPG",
+      "/images/rooms/room-1/Room - interior - 2.JPG",
+      "/images/rooms/room-1/Room - interior - 3.JPG",
+      "/images/rooms/room-1/Room - interior - 4.JPG",
+      "/images/rooms/room-1/Balcony - 1.JPG",
+      "/images/rooms/room-1/Balcony - 2.JPG",
+      "/images/rooms/room-1/Washroom -1.JPG",
+      "/images/rooms/room-1/Washroom -2.JPG",
+      "/images/rooms/room-1/Washroom -3.JPG",
+      "/images/rooms/room-1/Washroom -4.JPG"
     ],
     size: "340 sq ft / 32 m²",
     guests: "2 Guests",
@@ -76,9 +83,19 @@ export const rooms: RoomData[] = [
     image: "/images/rooms/room-2/primary.jpg",
     gallery: [
       "/images/rooms/room-2/primary.jpg",
-      "/images/rooms/room-2/interior-2.jpg",
-      "/images/rooms/room-2/balcony-1.jpg",
-      "/images/rooms/room-2/washroom-1.jpg"
+      "/images/rooms/room-2/Room 2 Interior - 1.JPG",
+      "/images/rooms/room-2/Room 2 Interior - 2.JPG",
+      "/images/rooms/room-2/Room 2 Interior - 3.JPG",
+      "/images/rooms/room-2/Room 2 Interior - 4.JPG",
+      "/images/rooms/room-2/Room 2 Interior - 5.JPG",
+      "/images/rooms/room-2/Room 2 Balcony - 1.JPG",
+      "/images/rooms/room-2/Room 2 Balcony - 2.JPG",
+      "/images/rooms/room-2/Room 2 Balcony - 3.JPG",
+      "/images/rooms/room-2/Room 2 Balcony - 4.JPG",
+      "/images/rooms/room-2/Room 2 Washroom - 1.JPG",
+      "/images/rooms/room-2/Room 2 Washroom - 2.JPG",
+      "/images/rooms/room-2/Room 2 Washroom - 3.JPG",
+      "/images/rooms/room-2/Room 2 Washroom - 4.JPG"
     ],
     size: "310 sq ft / 29 m²",
     guests: "2 Guests",
@@ -101,9 +118,15 @@ export const rooms: RoomData[] = [
     image: "/images/rooms/room-3/primary.jpg",
     gallery: [
       "/images/rooms/room-3/primary.jpg",
-      "/images/rooms/room-3/interior-2.jpg",
-      "/images/rooms/room-3/balcony-1.jpg",
-      "/images/rooms/room-3/washroom-1.jpg"
+      "/images/rooms/room-3/Room3 Interior - 1.JPG",
+      "/images/rooms/room-3/Room3 Interior - 2.JPG",
+      "/images/rooms/room-3/Room3 Interior - 4.JPG",
+      "/images/rooms/room-3/Room3 Balcony - 1.JPG",
+      "/images/rooms/room-3/Room3 Balcony - 2.JPG",
+      "/images/rooms/room-3/Room3 Washroom - 1.JPG",
+      "/images/rooms/room-3/Room3 Washroom - 2.JPG",
+      "/images/rooms/room-3/Room3 Washroom - 3.JPG",
+      "/images/rooms/room-3/Room3 Washroom - 4.JPG"
     ],
     size: "325 sq ft / 30 m²",
     guests: "2 Guests",
@@ -126,9 +149,19 @@ export const rooms: RoomData[] = [
     image: "/images/rooms/suite-room/primary.jpg",
     gallery: [
       "/images/rooms/suite-room/primary.jpg",
-      "/images/rooms/suite-room/interior-2.jpg",
-      "/images/rooms/suite-room/balcony-1.jpg",
-      "/images/rooms/suite-room/washroom-1.jpg"
+      "/images/rooms/suite-room/Suite Room Interior - 1.JPG",
+      "/images/rooms/suite-room/Suite Room Interior - 2.JPG",
+      "/images/rooms/suite-room/Suite Room Interior - 3.JPG",
+      "/images/rooms/suite-room/Suite Room Interior - 4.JPG",
+      "/images/rooms/suite-room/Suite Room Interior - 5.JPG",
+      "/images/rooms/suite-room/Suite Room Interior - 6.JPG",
+      "/images/rooms/suite-room/Suite Room - 1.JPG",
+      "/images/rooms/suite-room/Suite Room - 2.JPG",
+      "/images/rooms/suite-room/Suite Room - 3.JPG",
+      "/images/rooms/suite-room/Suite Room Washroom - 1.JPG",
+      "/images/rooms/suite-room/Suite Room Washroom - 2.JPG",
+      "/images/rooms/suite-room/Suite Room Washroom - 3.JPG",
+      "/images/rooms/suite-room/Suite Room Washroom - 4.JPG"
     ],
     size: "460 sq ft / 43 m²",
     guests: "3 Guests",

@@ -46,19 +46,21 @@ export function Hero() {
       ref={heroRef}
       className="relative flex min-h-screen w-full flex-col justify-between overflow-hidden bg-[#081218] text-white pt-28 pb-10"
     >
-      {/* Full-bleed Ambient Video Loop */}
+      {/* Full-bleed Ambient Video Loop — Continuous & Optimized */}
       <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
         <video
-          className="h-full w-full object-cover object-center opacity-50 animate-kenburns"
+          className="h-full w-full object-cover object-center opacity-60 scale-105"
           src={media.heroVideo}
           autoPlay
           muted
           loop
           playsInline
+          preload="metadata"
+          onEnded={(e) => e.currentTarget.play()}
           poster="/images/rooms/views/view-1.jpg"
         />
-        {/* Clean Vignette & Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#081218] via-[#081218]/40 to-[#040a0e]/75" />
+        {/* Cinematic Vignette & Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#081218] via-[#081218]/50 to-[#040a0e]/80" />
       </div>
 
       {/* Top Spacer */}

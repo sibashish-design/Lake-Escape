@@ -87,7 +87,7 @@ export default function RoomsPage() {
                 {/* Main Content Layout */}
                 <div className={`grid grid-cols-1 lg:grid-cols-12 gap-8 items-center ${isReversed ? "lg:flex-row-reverse" : ""}`}>
                   
-                  {/* Left Column: Interactive Image Gallery */}
+                  {/* Left Column: Interactive Image Gallery Carousel */}
                   <div className="lg:col-span-7 space-y-3">
                     <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl border border-white/15 bg-[#081218] shadow-md group">
                       <Image
@@ -99,18 +99,49 @@ export default function RoomsPage() {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#081218]/80 via-transparent to-transparent opacity-40" />
                       
-                      <div className="absolute bottom-4 left-4 bg-[#081218]/80 backdrop-blur-md px-3 py-1 rounded-md border border-white/15 text-[11px] font-semibold text-slate-200">
-                        {currentImgIndex === 0 ? "Main View" : currentImgIndex === 1 ? "Interior Lounge" : currentImgIndex === 2 ? "Overwater Balcony" : "Sanctuary Bath"}
+                      {/* Photo Counter */}
+                      <div className="absolute bottom-4 left-4 z-10 bg-[#081218]/85 backdrop-blur-md px-3 py-1 rounded-md border border-white/15 text-[11px] font-bold text-slate-200">
+                        Photo {currentImgIndex + 1} of {room.gallery.length}
                       </div>
+
+                      {/* Carousel Arrow Controls */}
+                      {room.gallery.length > 1 && (
+                        <div className="absolute bottom-4 right-4 z-10 flex items-center gap-2">
+                          <button
+                            onClick={() =>
+                              handleThumbnailClick(
+                                room.id,
+                                currentImgIndex === 0 ? room.gallery.length - 1 : currentImgIndex - 1
+                              )
+                            }
+                            className="flex h-8 w-8 items-center justify-center bg-[#081218]/85 backdrop-blur-md rounded-md border border-white/15 text-white hover:bg-white hover:text-black transition"
+                            title="Previous Photo"
+                          >
+                            ‹
+                          </button>
+                          <button
+                            onClick={() =>
+                              handleThumbnailClick(
+                                room.id,
+                                currentImgIndex === room.gallery.length - 1 ? 0 : currentImgIndex + 1
+                              )
+                            }
+                            className="flex h-8 w-8 items-center justify-center bg-[#081218]/85 backdrop-blur-md rounded-md border border-white/15 text-white hover:bg-white hover:text-black transition"
+                            title="Next Photo"
+                          >
+                            ›
+                          </button>
+                        </div>
+                      )}
                     </div>
 
-                    {/* Thumbnail Switcher */}
-                    <div className="grid grid-cols-4 gap-2.5">
+                    {/* Thumbnail Carousel Scroll Strip */}
+                    <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-none">
                       {room.gallery.map((img, i) => (
                         <button
                           key={i}
                           onClick={() => handleThumbnailClick(room.id, i)}
-                          className={`relative aspect-[16/10] overflow-hidden rounded-lg border transition-all duration-200 ${
+                          className={`relative min-w-[20%] aspect-[16/10] overflow-hidden rounded-lg border transition-all duration-200 shrink-0 ${
                             currentImgIndex === i
                               ? "border-white ring-2 ring-white/50 opacity-100"
                               : "border-white/15 opacity-60 hover:opacity-100"
