@@ -67,7 +67,7 @@ export function Hero() {
       {/* Hero Typography — Raleway Bold, Negative Kerning, No Gold */}
       <div className="relative z-10 mx-auto w-full max-w-[1300px] px-6 text-center">
         <div className="mx-auto max-w-4xl space-y-6">
-          
+
           <div className="inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/10 px-4 py-1.5 backdrop-blur-md">
             <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
             <span className="font-sans text-[12px] font-semibold text-slate-200 uppercase tracking-[-0.01em]">
@@ -109,7 +109,7 @@ export function Hero() {
 
       {/* Bottom Information Strip — Clean light grey lines & text */}
       <div className="relative z-10 mx-auto w-full max-w-[1400px] px-6 sm:px-10 pt-8 sm:pt-12 flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6 border-t border-white/[0.12]">
-        
+
         {/* Geographic Coordinates */}
         <div className="flex items-center gap-2 text-slate-400 font-sans text-[12px] font-medium tracking-[-0.01em]">
           <Compass size={14} className="text-slate-300" />

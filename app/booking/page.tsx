@@ -4,10 +4,10 @@ import { useState, useEffect, Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { 
-  Bell, Calendar, Check, ChevronDown, Clock, 
-  Compass, Eye, Lock, MapPin, 
-  Phone, Sparkles, 
+import {
+  Bell, Calendar, Check, ChevronDown, Clock,
+  Compass, Eye, Lock, MapPin,
+  Phone, Sparkles,
   Trash2, User, Users, Wifi, Wine, X, ArrowLeft, ArrowRight
 } from "lucide-react";
 import { rooms, RoomData } from "@/lib/data";
@@ -136,7 +136,7 @@ function BookingContent() {
 
   return (
     <main className="min-h-screen bg-[#f8fafc] text-[#0f172a] font-sans pb-28">
-      
+
       {/* ─── TOP HOTEL HERO BANNER ─── */}
       <section className="relative w-full bg-[#081218] text-white pt-24 pb-12 px-6 sm:px-12 border-b border-slate-800">
         <div className="absolute inset-0 overflow-hidden opacity-30">
@@ -187,7 +187,7 @@ function BookingContent() {
       {/* ─── STICKY SEARCH & FILTER BAR (Apple HIG Clean Layout) ─── */}
       <section className="sticky top-16 z-30 w-full bg-white shadow-sm border-b border-slate-200 px-4 sm:px-8 py-3.5">
         <div className="max-w-[1400px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-3 items-center">
-          
+
           {/* Guests Selector */}
           <div className="lg:col-span-3 relative">
             <label className="block text-[11px] font-bold uppercase text-slate-500 mb-1 tracking-[-0.01em]">
@@ -327,7 +327,7 @@ function BookingContent() {
 
       {/* ─── MAIN CONTENT AREA ─── */}
       <div className="max-w-[1400px] mx-auto px-4 sm:px-8 mt-8">
-        
+
         {/* STEP 1 & 2 SWITCHER */}
         {activeStep === "confirmation" ? (
           /* ─── CONFIRMATION SCREEN ─── */
@@ -393,10 +393,10 @@ function BookingContent() {
         ) : activeStep === "guest-details" ? (
           /* ─── CHECKOUT & GUEST DETAILS STEP ─── */
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            
+
             {/* Left Column: Form Details */}
             <div className="lg:col-span-8 space-y-6">
-              
+
               <button
                 onClick={() => setActiveStep("select-room")}
                 className="inline-flex items-center gap-2 text-xs font-semibold tracking-[-0.01em] text-slate-600 hover:text-[#081218]"
@@ -406,7 +406,7 @@ function BookingContent() {
               </button>
 
               <div className="bg-white border border-slate-200 rounded-xl p-6 sm:p-8 shadow-sm space-y-6">
-                
+
                 <div className="border-b border-slate-200 pb-4 flex items-center justify-between">
                   <div>
                     <h2 className="font-heading text-2xl font-bold text-[#081218] tracking-[-0.025em]">
@@ -554,7 +554,7 @@ function BookingContent() {
             {/* Right Column: Reservation Summary Sticky Box */}
             <aside className="lg:col-span-4">
               <div className="sticky top-36 bg-white border border-slate-200 rounded-xl p-6 shadow-sm space-y-5">
-                
+
                 <h3 className="font-heading text-lg font-bold text-[#081218] tracking-[-0.02em] border-b border-slate-200 pb-3">
                   Reservation Summary
                 </h3>
@@ -628,10 +628,10 @@ function BookingContent() {
         ) : (
           /* ─── STEP 1: ROOM LISTING & SELECTOR ─── */
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            
+
             {/* Main Column: Alerts + Filter Strip + Room Cards */}
             <div className="lg:col-span-8 space-y-6">
-              
+
               {/* Hotel Alert Notice */}
               <div className="bg-slate-100 border-l-4 border-slate-800 p-4 rounded-r-lg flex items-start gap-3 text-xs text-slate-800">
                 <Bell size={18} className="text-slate-700 shrink-0 mt-0.5" />
@@ -685,7 +685,7 @@ function BookingContent() {
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-12 p-6 gap-6">
-                        
+
                         {/* Room Visual Display */}
                         <div className="md:col-span-5 space-y-2">
                           <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg border border-slate-200 group">
@@ -811,7 +811,7 @@ function BookingContent() {
 
             {/* Right Sidebar */}
             <aside className="lg:col-span-4 space-y-6">
-              
+
               {/* Cart Summary Panel */}
               <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm space-y-4">
                 <div className="border-b border-slate-200 pb-3 flex items-center justify-between">

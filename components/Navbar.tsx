@@ -29,14 +29,13 @@ export function Navbar() {
   return (
     <>
       <header
-        className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ease-out ${
-          isScrolled || !isHome
+        className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ease-out ${isScrolled || !isHome
             ? "bg-[#081218]/90 py-3 shadow-[0_8px_30px_rgba(0,0,0,0.4)] border-b border-white/[0.12] backdrop-blur-xl"
             : "bg-gradient-to-b from-[#040a0e]/80 via-[#040a0e]/30 to-transparent py-5"
-        }`}
+          }`}
       >
         <div className="mx-auto flex w-full max-w-[1400px] items-center justify-between px-6 sm:px-10">
-          
+
           {/* Brand Logo */}
           <Link href="/" className="group flex items-center gap-3 transition-opacity duration-200 hover:opacity-90">
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -62,7 +61,7 @@ export function Navbar() {
 
           {/* Right Header Actions */}
           <div className="flex items-center gap-4 sm:gap-6">
-            
+
             {/* Guest Portal / Profile Access */}
             <Link
               href="/profile"
