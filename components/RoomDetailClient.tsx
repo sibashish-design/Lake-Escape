@@ -354,7 +354,7 @@ export function RoomDetailClient({ room, allRooms }: RoomDetailClientProps) {
 
               {/* RESERVE CTA Button */}
               <Link
-                href={`/booking?room=${room.slug}&checkIn=${checkIn}&checkOut=${checkOut}&guests=${guestsCount}`}
+                href={`/checkout?room=${room.slug}&checkIn=${checkIn}&checkOut=${checkOut}&guests=${guestsCount}`}
                 style={{ color: "#ffffff", backgroundColor: "#081218" }}
                 className="w-full py-4 rounded-xl font-bold uppercase tracking-wider text-sm flex items-center justify-center gap-2 shadow-lg hover:bg-slate-800 transition-all hover:scale-[1.02]"
               >
