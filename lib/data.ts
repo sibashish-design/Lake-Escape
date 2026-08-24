@@ -2,9 +2,9 @@ import { Bike, Sparkles, Sun, Utensils } from "lucide-react";
 
 export const media = {
   heroVideo: "/media/showreel.mp4",
-  boatOne: "/images/rooms/suite-room/primary.jpg",
-  boatTwo: "/images/rooms/views/view-1.jpg",
-  sunset: "/images/rooms/views/view-2.jpg",
+  boatOne: "/images/rooms/suite-room/Suite Room Interior - 1.JPG",
+  boatTwo: "/images/rooftop/Rooftop - 1.JPG",
+  sunset: "/images/lounge/Lounge - 1.JPG",
   boatCutout: "/media/lake-escape-boat-1.png",
   logoWhite: "/media/White logo.png",
   logoBlack: "/media/Black logo.png"
@@ -48,9 +48,8 @@ export const rooms: RoomData[] = [
     category: "Deluxe Lakefront Cabin",
     price: 14500,
     memberPrice: 12900,
-    image: "/images/rooms/room-1/primary.jpg",
+    image: "/images/rooms/room-1/Room - interior - 1.JPG",
     gallery: [
-      "/images/rooms/room-1/primary.jpg",
       "/images/rooms/room-1/Room - interior - 1.JPG",
       "/images/rooms/room-1/Room - interior - 2.JPG",
       "/images/rooms/room-1/Room - interior - 3.JPG",
@@ -80,9 +79,8 @@ export const rooms: RoomData[] = [
     category: "Sunset Vista Stateroom",
     price: 12800,
     memberPrice: 11400,
-    image: "/images/rooms/room-2/primary.jpg",
+    image: "/images/rooms/room-2/Room 2 Interior - 1.JPG",
     gallery: [
-      "/images/rooms/room-2/primary.jpg",
       "/images/rooms/room-2/Room 2 Interior - 1.JPG",
       "/images/rooms/room-2/Room 2 Interior - 2.JPG",
       "/images/rooms/room-2/Room 2 Interior - 3.JPG",
@@ -115,9 +113,8 @@ export const rooms: RoomData[] = [
     category: "Upper Deck Lakefront Cabin",
     price: 13200,
     memberPrice: 11800,
-    image: "/images/rooms/room-3/primary.jpg",
+    image: "/images/rooms/room-3/Room3 Interior - 1.JPG",
     gallery: [
-      "/images/rooms/room-3/primary.jpg",
       "/images/rooms/room-3/Room3 Interior - 1.JPG",
       "/images/rooms/room-3/Room3 Interior - 2.JPG",
       "/images/rooms/room-3/Room3 Interior - 4.JPG",
@@ -146,22 +143,24 @@ export const rooms: RoomData[] = [
     category: "Signature Master Suite",
     price: 19500,
     memberPrice: 17200,
-    image: "/images/rooms/suite-room/primary.jpg",
+    image: "/images/rooms/suite-room/Suite Room Interior - 1.JPG",
     gallery: [
-      "/images/rooms/suite-room/primary.jpg",
       "/images/rooms/suite-room/Suite Room Interior - 1.JPG",
       "/images/rooms/suite-room/Suite Room Interior - 2.JPG",
       "/images/rooms/suite-room/Suite Room Interior - 3.JPG",
       "/images/rooms/suite-room/Suite Room Interior - 4.JPG",
       "/images/rooms/suite-room/Suite Room Interior - 5.JPG",
       "/images/rooms/suite-room/Suite Room Interior - 6.JPG",
+      "/images/rooms/suite-room/Suite Room Interior - 7.JPG",
+      "/images/rooms/suite-room/Suite Room Interior - 8.JPG",
       "/images/rooms/suite-room/Suite Room - 1.JPG",
       "/images/rooms/suite-room/Suite Room - 2.JPG",
       "/images/rooms/suite-room/Suite Room - 3.JPG",
       "/images/rooms/suite-room/Suite Room Washroom - 1.JPG",
       "/images/rooms/suite-room/Suite Room Washroom - 2.JPG",
       "/images/rooms/suite-room/Suite Room Washroom - 3.JPG",
-      "/images/rooms/suite-room/Suite Room Washroom - 4.JPG"
+      "/images/rooms/suite-room/Suite Room Washroom - 4.JPG",
+      "/images/rooms/suite-room/Suite Room Washroom - 5.JPG"
     ],
     size: "460 sq ft / 43 m²",
     guests: "3 Guests",
