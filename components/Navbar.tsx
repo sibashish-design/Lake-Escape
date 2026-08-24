@@ -29,14 +29,13 @@ export function Navbar() {
   return (
     <>
       <header
-        className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ease-out ${
-          isScrolled || !isHome
+        className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ease-out ${isScrolled || !isHome
             ? "bg-[#081218]/95 py-3 shadow-[0_8px_30px_rgba(0,0,0,0.5)] border-b border-white/[0.15] backdrop-blur-xl"
             : "bg-[#081218]/80 py-4 border-b border-white/10 backdrop-blur-md shadow-lg"
-        }`}
+          }`}
       >
         <div className="mx-auto flex w-full max-w-[1400px] items-center justify-between px-4 sm:px-10">
-          
+
           {/* Brand Logo */}
           <Link href="/" className="group flex items-center gap-3 transition-opacity duration-200 hover:opacity-90">
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -62,7 +61,7 @@ export function Navbar() {
 
           {/* Right Header Actions */}
           <div className="flex items-center gap-2.5 sm:gap-4">
-            
+
             {/* Guest Portal / Profile Access */}
             <Link
               href="/profile"
@@ -76,7 +75,8 @@ export function Navbar() {
             {/* Book Stateroom CTA - Solid White Button with sharp dark text */}
             <Link
               href="/booking"
-              className="inline-flex items-center justify-center bg-white text-[#081218] font-sans text-xs sm:text-[13px] font-extrabold tracking-[-0.01em] px-3.5 sm:px-5 py-1.5 sm:py-2 rounded-lg border border-white transition-all duration-200 hover:bg-slate-200 hover:border-slate-200 shadow-md"
+              style={{ color: "#081218", backgroundColor: "#ffffff" }}
+              className="inline-flex items-center justify-center font-sans text-xs sm:text-[13px] font-extrabold tracking-[-0.01em] px-4 sm:px-5 py-2 rounded-lg border border-white transition-all duration-200 hover:bg-slate-200 shadow-md"
             >
               Reserve Suite
             </Link>
@@ -135,7 +135,8 @@ export function Navbar() {
               <Link
                 href="/booking"
                 onClick={() => setOpen(false)}
-                className="flex w-full items-center justify-center gap-2 bg-white text-[#081218] py-3.5 rounded-lg text-center font-sans text-[14px] font-bold tracking-[-0.01em] shadow-md"
+                style={{ color: "#081218", backgroundColor: "#ffffff" }}
+                className="flex w-full items-center justify-center gap-2 py-3.5 rounded-lg text-center font-sans text-[14px] font-extrabold tracking-[-0.01em] shadow-md"
               >
                 <span>Book a Suite</span>
                 <ArrowRight size={15} />
